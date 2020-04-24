@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tacgib.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="序列密码又称流密码，原理是明文流和密钥流按顺序逐位异或运算，从而产出密文流，序列密码属于对合运算。 以下是典型的序列密码RC4的加解密算法实现。其中秘钥流产生算法由RSA和PRGA两个核心子算法组成。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RC4加解密算法python简单实现">
+<meta property="og:url" content="http://tacgib.club/2019/03/29/RC4%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95python%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="TACGIB CLUB">
+<meta property="og:description" content="序列密码又称流密码，原理是明文流和密钥流按顺序逐位异或运算，从而产出密文流，序列密码属于对合运算。 以下是典型的序列密码RC4的加解密算法实现。其中秘钥流产生算法由RSA和PRGA两个核心子算法组成。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-23T07:00:55.874Z">
+<meta property="article:author" content="秋风木叶">
+<meta property="article:tag" content="小书匠">
+<meta property="article:tag" content="加密算法">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tacgib.club/2019/03/29/RC4%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95python%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>RC4加解密算法python简单实现 | TACGIB CLUB</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  <script type="text/javascript" src="/js/my_js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">TACGIB CLUB</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">云影时空</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tacgib.club/2019/03/29/RC4%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95python%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RC4加解密算法python简单实现
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-29 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-29T00:00:00+08:00">2019-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-23 15:00:55" itemprop="dateModified" datetime="2020-04-23T15:00:55+08:00">2020-04-23</time>
+              </span>
+
+          
+            <span id="/2019/03/29/RC4%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95python%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" class="post-meta-item leancloud_visitors" data-flag-title="RC4加解密算法python简单实现" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/29/RC4%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95python%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/RC4%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95python%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>序列密码又称流密码，原理是明文流和密钥流按顺序逐位异或运算，从而产出密文流，序列密码属于对合运算。</p>
+<p>以下是典型的序列密码RC4的加解密算法实现。其中秘钥流产生算法由RSA和PRGA两个核心子算法组成。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"># RC4 python实现代码</span><br><span class="line"># 仅支持128位ASCII码字符文本加解密，要支持任意输入需要更换编码方式</span><br><span class="line"># 秋风木叶 2019-3-27</span><br><span class="line"></span><br><span class="line">from FrankTools import ItoB, XOR, StoB, BtoS, swap</span><br><span class="line"></span><br><span class="line">def KeyGenerator(K, n):</span><br><span class="line"></span><br><span class="line">    # RSA(The Key-Scheduling Algorithm)</span><br><span class="line">    # 秘钥调度算法</span><br><span class="line">    S &#x3D; [i for i in range(0, 256)]</span><br><span class="line">    R &#x3D; []</span><br><span class="line">    for i in range(0,256):</span><br><span class="line">        R.append(ord(K[i % len(K)]))</span><br><span class="line">    j &#x3D; 0</span><br><span class="line">    for i in range(0,256):</span><br><span class="line">        j &#x3D; (j + S[i] + R[i]) % 256</span><br><span class="line">        S[i], S[j] &#x3D; swap(S[i], S[j])</span><br><span class="line">    #print(&#39;随机化后的S &#123;&#125;&#39;.format(S))</span><br><span class="line">    </span><br><span class="line">    # PRGA(The Pseudo-Random Generating Algorithm)</span><br><span class="line">    # 伪随机子密码生成算法</span><br><span class="line">    i &#x3D; 0</span><br><span class="line">    j &#x3D; 0</span><br><span class="line">    K_list &#x3D; []</span><br><span class="line">    while(n):</span><br><span class="line">        i &#x3D; (i+1)%256</span><br><span class="line">        j &#x3D; (j+S[i])%256</span><br><span class="line">        S[i],S[j] &#x3D; swap(S[i],S[j])</span><br><span class="line">        t &#x3D; (S[i]+S[j])%256</span><br><span class="line">        K_list.append(S[i])</span><br><span class="line">        # K_list存储生成的秘钥</span><br><span class="line">        n -&#x3D; 1</span><br><span class="line"></span><br><span class="line">    # 秘钥转换为二进制序列</span><br><span class="line">    k&#x3D;&#39;&#39;</span><br><span class="line">    for i in K_list:</span><br><span class="line">        k +&#x3D; ItoB(i)</span><br><span class="line">    #print(&#39;秘钥序列为：&#123;&#125;&#39;.format(BtoS(k)))</span><br><span class="line">    return k</span><br><span class="line"></span><br><span class="line">def Encrypt(M, K):</span><br><span class="line">    M_list &#x3D; StoB(M)</span><br><span class="line">    K_list &#x3D; KeyGenerator(K, len(M))</span><br><span class="line">    #print(&#39;------------&#123;0&#125;,&#123;1&#125;&#39;.format(len(M_list),len(K_list)))</span><br><span class="line">    #print(M_list,K_list)</span><br><span class="line">    return XOR(M_list,K_list)</span><br><span class="line"></span><br><span class="line">def Decrypt(C, K):</span><br><span class="line">    C_list &#x3D; C</span><br><span class="line">    K_list &#x3D; KeyGenerator(K, len(C)&#x2F;8)</span><br><span class="line">    #print(&#39;----------------&#123;0&#125;,&#123;1&#125;&#39;.format(len(C_list),len(K_list)))</span><br><span class="line">    #print(C_list,K_list)</span><br><span class="line">    return BtoS(XOR(C_list, K_list))</span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    #print(&#39;\n&gt;&gt;&gt;Test!&#39;)</span><br><span class="line">    M &#x3D; &#39;MING CHEN WU DIAN FA DONG FAN GONG&#39;</span><br><span class="line">    K &#x3D; &#39;XING CHUI PING YE KUO YUE YONG DA JIANG LIU&#39;</span><br><span class="line">    C &#x3D; Encrypt(M, K)</span><br><span class="line">    M1 &#x3D; Decrypt(C, K)</span><br><span class="line">    print(&#39;明文加密之后产生的密文是: &#123;&#125;&#39;.format(C))</span><br><span class="line">    print(&#39;解密出的明文是: &#123;&#125;&#39;.format(M1))</span><br></pre></td></tr></table></figure></div>
+<p>其中引用了FrankTools模块中的ItoB, XOR, StoB, BtoS, swap函数，FrankTools模块中将常用函数打包以便调用，展示如下：</p>
+<a id="more"></a>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"># Frank的工具箱</span><br><span class="line"># 凌云工具箱</span><br><span class="line"># 起因：前几天用python实现了几种古典密码算法，期间频繁涉及到字符串、二进制、数字串之间的转换，</span><br><span class="line"># 前几次都是在多个文件中分别去写，一点也不美，现在将其打包在一起，我也可以增加一些其他功能，构成</span><br><span class="line"># 我的专属工具箱O(∩_∩)O哈哈~</span><br><span class="line"></span><br><span class="line"># 更新日期 2019.3.29</span><br><span class="line"># 更新内容：新增swap()函数</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">ItoB(int n):</span><br><span class="line">    功能：数字转二进制</span><br><span class="line">    输入：0-255之间的整数</span><br><span class="line">    返回：8位二进制字符串，不足8位用0补齐</span><br><span class="line"></span><br><span class="line">CtoB(char ch): </span><br><span class="line">    功能：单字符转二进制</span><br><span class="line">    输入：单字符;</span><br><span class="line">    返回：8位二进制字符串，不足8位用0补齐。</span><br><span class="line"></span><br><span class="line">BtoS(string s): </span><br><span class="line">    功能：将二进制字符串转为字符串;</span><br><span class="line">    注意：每8位二进制对应一个字符，无奇偶校验;</span><br><span class="line">    返回：转换后的字符串。</span><br><span class="line"></span><br><span class="line">OXR(string L, string R): </span><br><span class="line">    功能: 将另个二进制字符串逐位进行异或运算;</span><br><span class="line">    输入：两个等长二进制字符串;</span><br><span class="line">    输出：异或运算后的等长二进制字符串。</span><br><span class="line"></span><br><span class="line">swap(a, b):</span><br><span class="line">    用于交换a, b两个变量的值</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"># 数字转二进制，不足八位补0</span><br><span class="line"># （二进制结果以字符串的形式提供）</span><br><span class="line">def ItoB(I):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    功能：数字转二进制</span><br><span class="line">    输入：0-255之间的整数</span><br><span class="line">    返回：8位二进制字符串，不足8位用0补齐</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    if(isinstance(I,int) &#x3D;&#x3D; False or I &lt; 0 or I &gt; 255):</span><br><span class="line">        return &#39;参数错误！&#39;</span><br><span class="line"></span><br><span class="line">    BinarySequence &#x3D; &#39;&#39;</span><br><span class="line">    while(True):</span><br><span class="line">        if(I % 2 &#x3D;&#x3D; 0):</span><br><span class="line">            BinarySequence +&#x3D; &#39;0&#39;</span><br><span class="line">        else:</span><br><span class="line">            BinarySequence +&#x3D; &#39;1&#39;</span><br><span class="line">        I &#x3D; I &#x2F;&#x2F; 2</span><br><span class="line">        if(I &#x3D;&#x3D; 1):</span><br><span class="line">            break</span><br><span class="line">        #print(OrdCh,BinarySequence)</span><br><span class="line">    BinarySequence +&#x3D; &#39;1&#39;</span><br><span class="line">    # 补齐8位</span><br><span class="line">    length &#x3D; 8 - len(BinarySequence)</span><br><span class="line">    while(length):</span><br><span class="line">        BinarySequence +&#x3D; &#39;0&#39;</span><br><span class="line">        length -&#x3D; 1</span><br><span class="line">    #print(&#39;BinarySequence:&#123;&#125;&#39;.format(BinarySequence))</span><br><span class="line">    return BinarySequence[::-1]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 字符串（或单字符）转二进制，单字符不足n位补0</span><br><span class="line"># （二进制结果以字符串的形式提供）</span><br><span class="line">def StoB( S, n&#x3D;8):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    功能：字符串转二进制</span><br><span class="line">    输入：字符串s, 每个字母位数n(默认值为8，实际输入至少7)</span><br><span class="line">    返回：二进制字符串，单字符不足n位用0补齐</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    if(isinstance(n,int) &#x3D;&#x3D; False or n &lt; 7):</span><br><span class="line">        return &#39;参数错误！&#39;</span><br><span class="line"></span><br><span class="line">    Bin &#x3D; &#39;&#39;</span><br><span class="line"></span><br><span class="line">    for c in [ord(i) for i in S]:</span><br><span class="line">        #print(&#39;c&#39;,c)</span><br><span class="line">        bin_unit &#x3D; &#39;&#39;</span><br><span class="line">        while(True):</span><br><span class="line">            if(c % 2 &#x3D;&#x3D; 0):</span><br><span class="line">                bin_unit +&#x3D; &#39;0&#39;</span><br><span class="line">            else:</span><br><span class="line">                bin_unit +&#x3D; &#39;1&#39;</span><br><span class="line">            c &#x3D; c &#x2F;&#x2F; 2</span><br><span class="line">            if(c &#x3D;&#x3D; 1):</span><br><span class="line">                break</span><br><span class="line">        bin_unit +&#x3D; &#39;1&#39;</span><br><span class="line"></span><br><span class="line">        # 补齐n位</span><br><span class="line">        length &#x3D; n - len(bin_unit)</span><br><span class="line">        #print(length)</span><br><span class="line">        while(length):</span><br><span class="line">            bin_unit +&#x3D; &#39;0&#39;</span><br><span class="line">            length -&#x3D; 1 </span><br><span class="line">            #print(length,bin_unit)</span><br><span class="line">        #print(bin_unit)</span><br><span class="line">        Bin +&#x3D; bin_unit[::-1]</span><br><span class="line">    return Bin</span><br><span class="line"></span><br><span class="line"># 二进制转字符串（或单字符）</span><br><span class="line">def BtoS(Bin,n&#x3D;8):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    功能：将二进制字符串转为字符串</span><br><span class="line">    注意：每n位二进制对应一个字符，无奇偶校验</span><br><span class="line">    返回：转换后的字符串</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    St &#x3D; &#39;&#39;</span><br><span class="line">    OrdCh &#x3D; 0</span><br><span class="line">    length &#x3D; n</span><br><span class="line">    for i in Bin:</span><br><span class="line">        length -&#x3D; 1</span><br><span class="line">        OrdCh +&#x3D; (ord(i)-ord(&#39;0&#39;))*(2**length)</span><br><span class="line">        #print(length,i,OrdCh)</span><br><span class="line">        if(length &#x3D;&#x3D; 0):</span><br><span class="line">            St +&#x3D; chr(OrdCh)</span><br><span class="line">            length &#x3D; n</span><br><span class="line">            OrdCh &#x3D; 0</span><br><span class="line">    return St</span><br><span class="line"></span><br><span class="line"># 二进制异或运算</span><br><span class="line"># exclusive OR，缩写成xor</span><br><span class="line">def XOR(L, R):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    功能: 将两个二进制字符串逐位进行异或运算</span><br><span class="line">    输入：两个等长二进制字符串</span><br><span class="line">    输出：异或运算后的等长二进制字符串</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    result &#x3D; &#39;&#39;</span><br><span class="line">    for i,j in zip(L, R):</span><br><span class="line">        #print(i,j)</span><br><span class="line">        if(i &#x3D;&#x3D; j):</span><br><span class="line">            result +&#x3D; &#39;0&#39;</span><br><span class="line">        else:</span><br><span class="line">            result +&#x3D; &#39;1&#39;</span><br><span class="line">    #print(&#39;result:&#123;&#125;&#39;.format(result))</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line"># swap</span><br><span class="line">def swap(a,b):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    输入：a,b;</span><br><span class="line">    输出：b,a.</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return b,a</span><br></pre></td></tr></table></figure></div>
+
+<p>水平和精力所限，疏漏之处难免，欢迎各位多多不吝赐教！<br><a href="mailto:f@tacgib.club">f@tacgib.club</a></p>
+<hr>
+<p>本文作者原创，转载请注明出处！</p>
+<center>秋风木叶</center>
+<center>2019.03.29 </center>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>有您的赞赏，我会更加有动力！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="http://zhengjie.ren/小书匠/1587477501749.png21" alt="秋风木叶 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="http://zhengjie.ren/小书匠/1587477501748.png21" alt="秋风木叶 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>秋风木叶
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://tacgib.club/2019/03/29/RC4%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95python%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" title="RC4加解密算法python简单实现">http://tacgib.club/2019/03/29/RC4加解密算法python简单实现/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E4%B9%A6%E5%8C%A0/" rel="tag"># 小书匠</a>
+              <a href="/tags/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" rel="tag"># 加密算法</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/12/%E5%87%A0%E7%A7%8D%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" rel="prev" title="几种古典密码代码实现">
+      <i class="fa fa-chevron-left"></i> 几种古典密码代码实现
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/05/%E5%88%9D%E8%AF%86%E5%B0%8F%E4%B9%A6%E5%8C%A0/" rel="next" title="初识小书匠">
+      初识小书匠 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">秋风木叶</p>
+  <div class="site-description" itemprop="description">一片宁静自由的空间……</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://tacgib.club/" title="http:&#x2F;&#x2F;tacgib.club">Title</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">秋风木叶</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'JPt4HeuQbSMjT4cQoLKEphX7-gzGzoHsz',
+      appKey     : 'J2t8poEMDg21tmRTFirjHgqx',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

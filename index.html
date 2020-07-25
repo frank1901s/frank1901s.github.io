@@ -125,12 +125,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,137 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/07/25/Vbox%E5%AE%89%E8%A3%85Kali-Linux%E4%B9%8B%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/25/Vbox%E5%AE%89%E8%A3%85Kali-Linux%E4%B9%8B%E4%B8%80/" class="post-title-link" itemprop="url">Vbox安装Kali-Linux之一</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-25 20:32:15 / 修改时间：20:32:26" itemprop="dateCreated datePublished" datetime="2020-07-25T20:32:15+08:00">2020-07-25</time>
+            </span>
+
+          
+            <span id="/2020/07/25/Vbox%E5%AE%89%E8%A3%85Kali-Linux%E4%B9%8B%E4%B8%80/" class="post-meta-item leancloud_visitors" data-flag-title="Vbox安装Kali-Linux之一" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/25/Vbox%E5%AE%89%E8%A3%85Kali-Linux%E4%B9%8B%E4%B8%80/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/25/Vbox%E5%AE%89%E8%A3%85Kali-Linux%E4%B9%8B%E4%B8%80/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>作为渗透测试人员，对于Kali都不会陌生。</p>
+<h2 id="关于Kali-Linux"><a href="#关于Kali-Linux" class="headerlink" title="关于Kali Linux"></a>关于Kali Linux</h2><p>Kali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版 。</p>
+<p>Kali Linux预装了许多渗透测试软件，包括nmap 、Wireshark 、John the Ripper、BurpSuite等，并且Kali Linux对ARM架构支持较好，甚至可以将Kali Linux安装在树莓派上来使用。</p>
+<p>目前，Kali Linux的最新版本为2020.2。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595675060998.png25" alt="enter description here"></p>
+<h2 id="为什么安装在VBox上"><a href="#为什么安装在VBox上" class="headerlink" title="为什么安装在VBox上"></a>为什么安装在VBox上</h2><p><strong>首先说说将Kali为什么安装在虚拟机里</strong></p>
+<p>这完全取决于个人的工作习惯，Kali仅满足于渗透测试或者相关研究之用，毕竟常用的大部分应用还都只有Windows版本，平常还是使用Windows多一些，所以电脑安装的操作系统肯定是Windows 10，Kali仅仅作为一个工具，最好即拿即用，平时不占用资源，所以将kali安装在虚拟机中是一个不错的选择。</p>
+<p>而且，选择虚拟机的方案不光可以装Kali，还可以安装其它各种各样的系统，安卓也可以，</p>
+<p>另外维护也方便，不想关机直接挂起就行，下次打开继续使用；坏了也关系不大，有镜像在建一个就好，也不费事，当然重要数据一定要及时导出和备份，这是一个常识。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595675627785.png25" alt="安装多个虚拟机的VBox"></p>
+<p><strong>再说说为什么选择VBox</strong></p>
+<p>VBox，全名Oracle VM VirtualBox，跟它功能类似或者说超过它的还有大名鼎鼎的VMware，为什么不选择VMware呢——因为穷。</p>
+<p>VMware是商业软件，查了一下VMware WorkStation 15.5 Pro售价1709元，对我个人而言它的价格还是挺贵的，作为还挣扎在温饱线上的我，目前还是舍不得花钱来购买。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595674999077.png25" alt="还是有点小贵"></p>
+<p>而VBox是开源软件，功能也完全可以满足需求，当然偶尔会有些不稳定，今天我之所以重新安装Kali，是因为之前的Kali虚拟机歇菜了，但这我觉得都不是问题，毕竟免费的，已经很不错了，反正就是一个测试工具，坏了大不了就重装呗，又不费事。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595676165355.png25" alt="歇菜的VBox Kali"></p>
+<p>通常情况下还是很好用的，故障率不高。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595676601468.png25" alt="通常情况下还是很好用的"></p>
+<p>有人说可以用破解版，我不太赞成，安全性也存疑，我宁可用开源的。</p>
+<h2 id="VBox安装Kali的方法"><a href="#VBox安装Kali的方法" class="headerlink" title="VBox安装Kali的方法"></a>VBox安装Kali的方法</h2><p>通常安装系统每个个把小时是不可能搞得定的，虚拟机安装系统也是。</p>
+<p>Kali官方网站提供有专门用于VBox的镜像，这一点真的很贴心，直接下载导入即可，连安装都不用。</p>
+<p><strong>下载支持VBox的Kali Linux镜像文件</strong></p>
+<p>打开官方下载链接：<a href="https://www.kali.org/downloads/" target="_blank" rel="noopener">https://www.kali.org/downloads/</a></p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595677409906.png25" alt="下载页面"></p>
+<p>下载torrent文件，并用迅雷打开，使用迅雷下载镜像文件速度挺快的，基本是全速的下载。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595677151537.png25" alt="VBox镜像下载页面"></p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595677831050.png25" alt="迅雷下载效果"></p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595677907029.png25" alt="下载好的镜像文件"></p>
+<p><strong>VBox导入镜像</strong><br>打开VBox，点击”管理“，选择”导入虚拟电脑“</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595678087752.png25" alt="导入虚拟电脑"></p>
+<p>选择下载好的镜像文件，点击“下一步”</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595678227243.png25" alt="选择镜像文件"></p>
+<p>根据实际情况修改配置，建议修改初始文件夹位置</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595678366466.png25" alt="修改初始文件夹位置"></p>
+<p>点击右下方“导入”，弹出“软件授权协议”页面，选择“同意”</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595678483481.png25" alt="同意软件授权协议"></p>
+<p>等待导入完成</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595678601122.png25" alt="等待导入完成"></p>
+<p>安装完成，初始登录账户为：kali/kali，登录后的界面如下：</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595678879174.png25" alt="登录后的界面"></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p><strong>网络设置为桥接模式</strong></p>
+<p>这样跟本机处于同一个网络，为了方便测试之用。</p>
+<p>网络设置在虚拟机开启之前和之后都可以设置，建议在开启之前设置，选择虚拟机，依次点击“设置”-“网络”，选择“桥接网卡”，下面的网卡也要选择本机正在使用的网卡名称，否则不能正常上网。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595679746073.png25" alt="设置网络为桥接网卡"></p>
+<p>设置完成后，可以在终端中使用“ip addr”命令来查看IP配置情况。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595680081080.png25" alt="查看网络配置情况"></p>
+<p><strong>时区需要设置为：Asia/Shanghai</strong><br><a href="https://blog.csdn.net/u014101410/java/article/details/104637768" target="_blank" rel="noopener">关于时区设置参考了这篇博客</a></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sudo timedatectl <span class="built_in">set</span>-timezone <span class="string">"Asia/Shanghai"</span></span><br><span class="line"><span class="comment">#修改时区为上海</span></span><br><span class="line"> </span><br><span class="line">sudo timedatectl <span class="built_in">set</span>-timezone UTC</span><br><span class="line"><span class="comment">#使用和设置协调世界时间</span></span><br><span class="line">sudo timedatectl <span class="built_in">set</span>-local-rtc 0</span><br><span class="line"><span class="comment">#将硬件时钟设置为协调世界时（UTC）</span></span><br><span class="line"> </span><br><span class="line">sudo service ntp restart</span><br><span class="line"><span class="comment">#重启ntp时间同步服务，等待时间更新，一般需要3~6秒</span></span><br><span class="line">sleep 5s</span><br><span class="line"><span class="comment">#等待5秒钟</span></span><br><span class="line"></span><br><span class="line">sudo hwclock -w</span><br><span class="line"><span class="comment">#将系统时间写入到硬件时钟，防止重启系统后更改失效</span></span><br><span class="line"> </span><br><span class="line">sudo timedatectl status</span><br><span class="line"><span class="comment">#查看时间状态</span></span><br></pre></td></tr></table></figure></div>
+
+<p>其他关于Kali配置和使用方面的体验，后面再做分享！</p>
+<hr>
+<center>秋风木叶</center>
+<center>2020-7-25</center>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -976,109 +1107,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="秋风木叶">
-      <meta itemprop="description" content="一片宁静自由的空间……">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TACGIB CLUB">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-18 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-18T00:00:00+08:00">2020-03-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-16 11:25:30" itemprop="dateModified" datetime="2020-05-16T11:25:30+08:00">2020-05-16</time>
-              </span>
-
-          
-            <span id="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<p>PhpMyAdmin无法连接数据库问题解决：</p>
-<p>报错：<br><code>phpMyAdmin #2002 Cannot log in to the MySQL server</code></p>
-<p>打开配置文件</p>
-<p><code>phpMyAdmin]# vim libraries/config.default.php</code></p>
-<p>修改：<br><code>$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] = &#39;localhost&#39;;</code><br>为：<br><code>$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] = &#39;127.0.0.1&#39;;</code></p>
-<p>DVWA数据库无法创建错误修复：</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1584494846550.png18" alt="dvwa无法创建数据库"></p>
-<p>修改config.inc.php文件</p>
-<p>要将：</p>
-<p><code>$_DVWA[ &#39;db_server&#39; ]   = &#39;localhost1&#39;;</code><br>修改为：<br><code>$_DVWA[ &#39;db_server&#39; ]   = &#39;127.0.0.1&#39;;</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1148,14 +1176,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

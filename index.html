@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">32</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/08/09/%E6%88%91%E7%9A%84%E5%BB%BA%E7%AB%99%E7%BB%8F%E5%8E%86%E5%88%86%E4%BA%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/09/%E6%88%91%E7%9A%84%E5%BB%BA%E7%AB%99%E7%BB%8F%E5%8E%86%E5%88%86%E4%BA%AB/" class="post-title-link" itemprop="url">我的建站经历分享</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-09 14:58:24 / 修改时间：15:00:10" itemprop="dateCreated datePublished" datetime="2020-08-09T14:58:24+08:00">2020-08-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h2 id="01-拥有这样一个网站的目的"><a href="#01-拥有这样一个网站的目的" class="headerlink" title="01 拥有这样一个网站的目的"></a>01 拥有这样一个网站的目的</h2><p>我喜欢拥有自己的一个网站，就像在网络中的一片自由天地，也是存在于网络的一种标志，一个对外展示自我的窗口。</p>
+<p>可以记录和分享自己的生活、学习的感悟。可能并没有人关注我，但是我并不在意，我就是我的观众，我欣赏我自己。</p>
+<p>也可以将他当做某种“特殊”信函的发送途径。比如曾经使用它来向好友送上生日祝福，只要在网站上构造好一个页面，然后把访问URL发给他就可以了。还有一次公司组织元旦交换礼物的活动，每个人准备一份礼物，集中到一起然后再随机抽取一份，以达到匿名交换的目的，我运用了我的特殊方式，我准备了一个精美的盒子，一个U盘，U盘容量只有128M，如此小的容量，想表达的意思就是U盘仅是载体，而非礼物本身，里面存放一个文档，说明我的意图和需要他访问的URL，当然我将内容进行了简单的加密，我相信有缘人可以打开，哈哈。其实这用于表白或者恋爱期间当然同样无比浪漫……我见过有人这样做，我也同样做过。</p>
+<h2 id="02-我的建站经历分享"><a href="#02-我的建站经历分享" class="headerlink" title="02 我的建站经历分享"></a>02 我的建站经历分享</h2><p>最初，我使用WordPres在阿里云共享云主机上部署博客应用，用且使用了一段时间（具体记不清楚了），这时算是启蒙阶段，我开始学会搭建博客站点，并且简单进行维护。</p>
+<p>共享云主机价格优惠，当时以学生的身份购买，一年续费也只需要50块就好。但是不足之处也同样存在，容量、性能受限，另外不能随意的配置服务，无法体验到真正云主机的感觉，我想要一台独立的云主机。我购买了HostUS的VPS主机，费用每季度7.95美元，价格稍贵些，但是我可以完全的拥有它的控制权，我除了在上面部署了WordPress应用，还部署了VPS，可以实现翻墙的目的（当然由于物理距离远，配置低，性能很是一般）。</p>
+<p>虽然HostUS的VPS主机存在费用高、访问速度慢等方面的不足，但我还是使用了两三年时间，直到最后我因为经常服务中断，导致不想再续费为止。</p>
+<p>后来我使用了目前正在使用的方案，HEXO+GitHub的部署方案，还是用原先的<a href="https://tacgib.club">域名</a>：tacgib.club。HEXO是一种静态博客框架，编写和发布博客门槛也提高了少许，以Markdown语法进行书写，然后使用HEXO+Git的方式进行发布，发博客还要终端敲命令，使用最多的就是：hexo d -g。</p>
+<p>使用这种方案的好处有很多，第一个就是轻量化，图片资源我存储在七牛云上，文章中直接引用即可，一篇也就几十k大小，不会占用太多空间。</p>
+<p>而成本除了域名之外，本来可以为0的，但是由于我的文章中引用的图片全部存在七牛云对象存储上，我将资源访问方式强制设置为https的方式，是为了大家在访问时有更好的体验，浏览页面时浏览器地址栏会显示绿锁，而不是提示不安全了，当然这会由于访问量的增加而增加使用费用。除了域名续费，网站目前的运行成本主要就在于此。</p>
+<p>目前的网站形式我在很长一段时间内可能都不会改变，因为他基本可以满足我的需求。</p>
+<hr>
+<center>秋风木叶</center>
+<center>2020-8-9</center>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/08/06/Kali%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC%E3%80%81%E7%AB%AF%E5%8F%A3%E4%BF%A1%E6%81%AF%E4%BB%A5%E5%8F%8A%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -183,10 +255,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-06 23:17:54 / 修改时间：23:18:14" itemprop="dateCreated datePublished" datetime="2020-08-06T23:17:54+08:00">2020-08-06</time>
+              <time title="创建时间：2020-08-06 23:17:54" itemprop="dateCreated datePublished" datetime="2020-08-06T23:17:54+08:00">2020-08-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-09 15:00:56" itemprop="dateModified" datetime="2020-08-09T15:00:56+08:00">2020-08-09</time>
+              </span>
 
           
 
@@ -200,34 +278,15 @@
 
       
           <h2 id="1-查看版本信息"><a href="#1-查看版本信息" class="headerlink" title="1.查看版本信息"></a>1.查看版本信息</h2><p>1.1 查看内核信息</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure></div>
-
-<p>1.2 查看版本信息</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure></div>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1596724790387.png6" alt="查看版本信息"></p>
-<h2 id="2-更新系统"><a href="#2-更新系统" class="headerlink" title="2.更新系统"></a>2.更新系统</h2><p>2.1 修改源</p>
-<p>使用vim打开配置文件</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure></div>
-<p>注释掉官方源，增加阿里云源（这一个就够了）</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deb http://http.kali.org/kali kali-rolling main non-free contrib</span></span><br><span class="line"><span class="comment"># deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br></pre></td></tr></table></figure></div>
-
-<p>2.2 更新系统</p>
-<p>使用如下命令更新系统：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查和安装更新</span></span><br><span class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</span><br><span class="line"><span class="comment"># 删除下载的包</span></span><br><span class="line">apt-get clean</span><br></pre></td></tr></table></figure></div>
-<h2 id="3-查看端口信息"><a href="#3-查看端口信息" class="headerlink" title="3.查看端口信息"></a>3.查看端口信息</h2><p>3.1.使用netstat命令查看端口信息，参数解释如下：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-a (all) 显示所有选项，默认不显示LISTEN相关。</span><br><span class="line">-t (tcp) 仅显示tcp相关选项。</span><br><span class="line">-u (udp) 仅显示udp相关选项。</span><br><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服务状态。</span><br><span class="line"></span><br><span class="line">-p 显示建立相关链接的程序名</span><br><span class="line">-r 显示路由信息，路由表</span><br><span class="line">-e 显示扩展信息，例如uid等</span><br><span class="line">-s 按各个协议进行统计</span><br><span class="line">-c 每隔一个固定时间，执行该netstat命令。</span><br></pre></td></tr></table></figure></div>
-<p>如果想查看具体某一个端口信息，可以使用：-pantu参数</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1596725653941.png6" alt="查看特定端口信息"></p>
-<p>参数的输入顺序无所谓</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1596725582888.png6" alt="查看特定端口信息"></p>
-<p>3.2 可以使用nmap扫描输出端口信息</p>
-<p>由于kali默认安装有nmap，所以可以使用nmap扫描本地地址来显示当前端口信息</p>
-<p>使用：nmap localhost（或者填写本地IP）</p>
-<p>如下图所示，本机仅开启了22端口，用于ssh远程连接。</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1596725837427.png6" alt="nmap查看本机端口信息"></p>
-<hr>
-<center>秋风木叶</center>
-<center>2020-8-6</center>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/06/Kali%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC%E3%80%81%E7%AB%AF%E5%8F%A3%E4%BF%A1%E6%81%AF%E4%BB%A5%E5%8F%8A%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -269,10 +328,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-06 22:32:07 / 修改时间：22:32:18" itemprop="dateCreated datePublished" datetime="2020-08-06T22:32:07+08:00">2020-08-06</time>
+              <time title="创建时间：2020-08-06 22:32:07" itemprop="dateCreated datePublished" datetime="2020-08-06T22:32:07+08:00">2020-08-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-09 15:01:06" itemprop="dateModified" datetime="2020-08-09T15:01:06+08:00">2020-08-09</time>
+              </span>
 
           
 
@@ -286,27 +351,14 @@
 
       
           <p>Kali 2020.3中未安装ssh，遂手动进行安装，步骤记录如下：</p>
-<h2 id="1-更新Kali-Linux组件"><a href="#1-更新Kali-Linux组件" class="headerlink" title="1.更新Kali Linux组件"></a>1.更新Kali Linux组件</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</span><br></pre></td></tr></table></figure></div>
-<h2 id="2-安装ssh"><a href="#2-安装ssh" class="headerlink" title="2.安装ssh"></a>2.安装ssh</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ssh</span><br></pre></td></tr></table></figure></div>
-<h2 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h2><p>使用Vim命令打开配置文件：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure></div>
-<p>主要修改如下第35行（加入此行）和第59行（去掉注释符）的内容。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">31 <span class="comment"># Authentication: </span></span><br><span class="line">32  </span><br><span class="line">33 <span class="comment">#LoginGraceTime 2m </span></span><br><span class="line">34 <span class="comment">#PermitRootLogin prohibit-password </span></span><br><span class="line">35 PermitRootLogin yes</span><br><span class="line">36 <span class="comment">#StrictModes yes</span></span><br><span class="line">37 <span class="comment">#MaxAuthTries 6</span></span><br><span class="line">38 <span class="comment">#MaxSessions 10</span></span><br><span class="line">39 </span><br><span class="line">……</span><br><span class="line">57 </span><br><span class="line">58 <span class="comment"># To disable tunneled clear text passwords, change to no here!</span></span><br><span class="line">59 PasswordAuthentication yes</span><br><span class="line">60 <span class="comment">#PermitEmptyPasswords no</span></span><br><span class="line">61</span><br></pre></td></tr></table></figure></div>
-<p>Vim显示行号的方式：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.使用vim进入待编辑文件</span><br><span class="line">b.按“ESC”，再按“:”</span><br><span class="line">c.输入“<span class="built_in">set</span> number”，按“Enter”键，即可显示行号</span><br></pre></td></tr></table></figure></div>
-<h2 id="4-开启服务并设置开机启动"><a href="#4-开启服务并设置开机启动" class="headerlink" title="4.开启服务并设置开机启动"></a>4.开启服务并设置开机启动</h2><p>4.1 启动ssh服务：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh start</span><br></pre></td></tr></table></figure></div>
-<p>4.2 查看ssh服务状态：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh status</span><br></pre></td></tr></table></figure></div>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1596724165206.png6" alt="查看ssh服务状态"></p>
-<p>4.3 关闭ssh服务：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh stop</span><br></pre></td></tr></table></figure></div>
-<p>4.4 设置开机启动：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d ssh <span class="built_in">enable</span></span><br></pre></td></tr></table></figure></div>
-<p>4.4 重启后生效（reboot）</p>
-<hr>
-<center>秋风木叶</center>
-<center>2020-8-6</center>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/06/kali%E5%90%AF%E7%94%A8ssh/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -348,10 +400,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-25 20:42:27 / 修改时间：20:42:36" itemprop="dateCreated datePublished" datetime="2020-07-25T20:42:27+08:00">2020-07-25</time>
+              <time title="创建时间：2020-07-25 20:42:27" itemprop="dateCreated datePublished" datetime="2020-07-25T20:42:27+08:00">2020-07-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-09 15:01:29" itemprop="dateModified" datetime="2020-08-09T15:01:29+08:00">2020-08-09</time>
+              </span>
 
           
 
@@ -364,7 +422,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>作为渗透测试人员，对于Kali都不会陌生。</p>
+          <a id="more"></a>
+
+<p>作为渗透测试人员，对于Kali都不会陌生。</p>
 <h2 id="关于Kali-Linux"><a href="#关于Kali-Linux" class="headerlink" title="关于Kali Linux"></a>关于Kali Linux</h2><p>Kali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版 。</p>
 <p>Kali Linux预装了许多渗透测试软件，包括nmap 、Wireshark 、John the Ripper、BurpSuite等，并且Kali Linux对ARM架构支持较好，甚至可以将Kali Linux安装在树莓派上来使用。</p>
 <p>目前，Kali Linux的最新版本为2020.2。</p>
@@ -845,79 +905,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="秋风木叶">
-      <meta itemprop="description" content="一片宁静自由的空间……">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TACGIB CLUB">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/" class="post-title-link" itemprop="url">使用python拼接视频实际应用分享</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-17 22:01:45" itemprop="dateCreated datePublished" datetime="2020-04-17T22:01:45+08:00">2020-04-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-16 11:27:30" itemprop="dateModified" datetime="2020-05-16T11:27:30+08:00">2020-05-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h1><p>前段时间购买一台小米的摄像机——小白智能摄像机云台版，价格不贵，但是有个最大的问题就是他以分钟为单位存储视频文件，每分钟的视频都会存储为一个mp4文件，这样导致观看回放的时候要频繁的切换视频，特别累。</p>
-<p>如果能有办法将他一小时为单位合成就好了，了解了python可以轻松实现，所以尝试了一番，效果还不错，另外使用Python编程的感觉真的很爽。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -987,7 +974,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

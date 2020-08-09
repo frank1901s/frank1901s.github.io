@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">32</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,81 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2019/08/19/%E5%85%B3%E4%BA%8E%E9%98%B2%E6%AD%A2%E5%A4%B1%E6%95%88%E6%8E%88%E6%9D%83%E7%A0%81%E8%A2%AB%E5%88%A9%E7%94%A8%E6%83%85%E5%86%B5%E7%9A%84%E6%80%9D%E8%80%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/19/%E5%85%B3%E4%BA%8E%E9%98%B2%E6%AD%A2%E5%A4%B1%E6%95%88%E6%8E%88%E6%9D%83%E7%A0%81%E8%A2%AB%E5%88%A9%E7%94%A8%E6%83%85%E5%86%B5%E7%9A%84%E6%80%9D%E8%80%83/" class="post-title-link" itemprop="url">关于防止失效授权码被利用情况的思考</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-19 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-19T00:00:00+08:00">2019-08-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-16 11:26:40" itemprop="dateModified" datetime="2020-05-16T11:26:40+08:00">2020-05-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p><strong>1 授权码产生原理思考</strong></p>
+<p>很多程序的登录以及重要操作都可能采用“授权码”的方式来进行身份认证，授权码的生成工作大多采用授权码生成器产生，根据当前的时间，使用特定的算法来计算出一组“授权码”，这组授权码如果是一分钟有效，那么仅仅跟精度为分钟的当前时间有关。</p>
+<p>输入授权码进行验证的时候，系统首先会根据当前的时间参数使用相同的算法产生一组数字来与输入的授权码比较，二者一致即通过验证。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/08/19/%E5%85%B3%E4%BA%8E%E9%98%B2%E6%AD%A2%E5%A4%B1%E6%95%88%E6%8E%88%E6%9D%83%E7%A0%81%E8%A2%AB%E5%88%A9%E7%94%A8%E6%83%85%E5%86%B5%E7%9A%84%E6%80%9D%E8%80%83/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -552,7 +627,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-08 11:16:46" itemprop="dateModified" datetime="2020-08-08T11:16:46+08:00">2020-08-08</time>
+                <time title="修改时间：2020-08-09 15:00:36" itemprop="dateModified" datetime="2020-08-09T15:00:36+08:00">2020-08-09</time>
               </span>
 
           
@@ -569,42 +644,14 @@
           <h2 id="00-写在前面"><a href="#00-写在前面" class="headerlink" title="00 写在前面"></a>00 写在前面</h2><p>其实我平时都是在虚拟机里倒腾Linux，网络类型常设置为“桥接网卡”，目的是和物理机处于同一网段便于测试之用，而物理机又是通过DHCP自动获取到的网络地址，这样虚拟机通常也会自动获取到IP地址，无需手动再配置IP。</p>
 <p>最近虚拟机需要手动配置静态IP是因为物理机使用了有线连接并且不支持DHCP自动分配地址的情况，此时物理机和虚拟机都需要手动配置IP，</p>
 <p>物理机Windows 10操作系统，其配置过程自不必赘述，Linux虚拟机除了区分各个发行版之外，还有有无图形界面之分，对于有图形界面的Linux系统，其网络配置较简单，本文以Kali Linux为例进行演示；无图像界面的Linux系统即只能通过命令行的方式进行配置，本文以CentOS 7进行演示。</p>
-<h2 id="01-Kali-Linux静态网络配置"><a href="#01-Kali-Linux静态网络配置" class="headerlink" title="01 Kali Linux静态网络配置"></a>01 Kali Linux静态网络配置</h2><p><strong>修改前先查看当前的的网络配置</strong></p>
-<p>在终端输入“ip addr”，或者右键单击网络连接图标，选择“Connection Information”</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595864372321.png27" alt="查看当前网络配置"></p>
-<p>当前网络段为“172……”</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595864493610.png27" alt="当前网络配置"></p>
-<p><strong>开始修改网络配置</strong></p>
-<p>右键单击网络连接图标，选择“Edit Connections…”</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595864557480.png27" alt="编辑网络配置"></p>
-<p>双击“Wired Connection1”（可能有多条，选择需要修改的即可）</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595864697957.png27" alt="选择编辑对象"></p>
-<p>选择”IPv4 Settings“，在”Address“区修改网络配置，若无记录则点击右侧”Add“添加即可。</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595864742291.png27" alt="编辑网络配置"></p>
-<p>点击右下角“save”保存设置，之后重启系统（reboot）或者重启网络服务（/etc/init.d/networking restart）即可。</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595866294136.png28" alt="重启网络服务"></p>
-<p>下图是修改后的网络信息。</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595865505564.png27" alt="修改完成的网络配置"><br>。</p>
-<h2 id="02-CentOS-7静态网络配置"><a href="#02-CentOS-7静态网络配置" class="headerlink" title="02 CentOS 7静态网络配置"></a>02 CentOS 7静态网络配置</h2><p>2.1 使用Vim打开配置文件</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure></div>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595862921180.png27" alt="打开配置文件"></p>
-<p>2.2 按“i”或“a”键进入vim编辑模式，修改网络配置</p>
-<p>将配置“BOOTPROTO=dhcp”的值修改为“static”</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=static</span><br></pre></td></tr></table></figure></div>
-<p>确保“ONBOOT=yes”，这样可以保证开机自动启用网络配置</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ONBOOT=yes</span><br></pre></td></tr></table></figure></div>
-
-<p>添加网络地址、掩码、网关信息，如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IPADDR=192.168.1.88</span><br><span class="line">IPMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.1.1</span><br></pre></td></tr></table></figure></div>
-<p>2.3 修改完的配置文件示例如下：</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595863172164.png27" alt="网络配置截图"></p>
-<p>2.4 重启系统</p>
-<p>哈哈，我个人习惯使用reboot重启系统，其实重新加载网卡配置就行</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595864016174.png27" alt="重启"></p>
-<p>重启之后，使用ip addr查看网络信息<br><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595863962833.png27" alt="修改之后的网络信息"></p>
-<hr>
-<center>秋风木叶</center>
-<center>2020-7-27</center>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/27/Linux%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%AE%80%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -845,80 +892,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2019/07/05/%E5%88%9D%E8%AF%86%E5%B0%8F%E4%B9%A6%E5%8C%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="秋风木叶">
-      <meta itemprop="description" content="一片宁静自由的空间……">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TACGIB CLUB">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/05/%E5%88%9D%E8%AF%86%E5%B0%8F%E4%B9%A6%E5%8C%A0/" class="post-title-link" itemprop="url">初识小书匠</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-05T00:00:00+08:00">2019-07-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-12 22:36:43" itemprop="dateModified" datetime="2020-05-12T22:36:43+08:00">2020-05-12</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<p>印象笔记推出Markdown功能之后我激动了很长一段时间，我以为自己可以抛弃富文本了，但是印象笔记的Markdown笔记书写页面真的不是很好看，另外在排版方面我觉得自己是在缺少技巧，导致写出来的文章版面很丑，所以我只有有时候使用印象笔记的Markdown功能，一直想找到一款比较能够吸引我的Markdown编辑器，但是一直找不到。</p>
-<p>直到今天，认识了一款很酷的编辑器——小书匠，他的界面看起来很文艺、很简洁、很有气质。现在还不是很了解，但是似乎已经有了跟女友刚开始约会时的感觉了，很期待发现更多，心情很不错，终于可以快乐的写作了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/07/05/%E5%88%9D%E8%AF%86%E5%B0%8F%E4%B9%A6%E5%8C%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -988,7 +961,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"tacgib.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="作为渗透测试人员，对于Kali都不会陌生。 关于Kali LinuxKali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版">
+  <meta name="description" content="作为渗透测试人员，对于Kali都不会陌生。 关于Kali LinuxKali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vbox安装Kali-Linux之一">
 <meta property="og:url" content="https://tacgib.club/2020/07/25/Vbox%E5%AE%89%E8%A3%85Kali-Linux%E4%B9%8B%E4%B8%80/index.html">
 <meta property="og:site_name" content="TACGIB CLUB">
-<meta property="og:description" content="作为渗透测试人员，对于Kali都不会陌生。 关于Kali LinuxKali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版">
+<meta property="og:description" content="作为渗透测试人员，对于Kali都不会陌生。 关于Kali LinuxKali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595675060998.png25">
 <meta property="og:image" content="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595675627785.png25">
@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595679746073.png25">
 <meta property="og:image" content="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1595680081080.png25">
 <meta property="article:published_time" content="2020-07-25T12:42:27.501Z">
-<meta property="article:modified_time" content="2020-07-25T12:42:36.535Z">
+<meta property="article:modified_time" content="2020-08-09T07:01:29.058Z">
 <meta property="article:author" content="秋风木叶">
 <meta property="article:tag" content="小书匠">
 <meta property="article:tag" content="Kali">
@@ -155,7 +155,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">32</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
 
   </li>
   </ul>
@@ -208,10 +208,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-25 20:42:27 / 修改时间：20:42:36" itemprop="dateCreated datePublished" datetime="2020-07-25T20:42:27+08:00">2020-07-25</time>
+              <time title="创建时间：2020-07-25 20:42:27" itemprop="dateCreated datePublished" datetime="2020-07-25T20:42:27+08:00">2020-07-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-09 15:01:29" itemprop="dateModified" datetime="2020-08-09T15:01:29+08:00">2020-08-09</time>
+              </span>
 
           
 
@@ -224,7 +230,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>作为渗透测试人员，对于Kali都不会陌生。</p>
+        <a id="more"></a>
+
+<p>作为渗透测试人员，对于Kali都不会陌生。</p>
 <h2 id="关于Kali-Linux"><a href="#关于Kali-Linux" class="headerlink" title="关于Kali Linux"></a>关于Kali Linux</h2><p>Kali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版 。</p>
 <p>Kali Linux预装了许多渗透测试软件，包括nmap 、Wireshark 、John the Ripper、BurpSuite等，并且Kali Linux对ARM架构支持较好，甚至可以将Kali Linux安装在树莓派上来使用。</p>
 <p>目前，Kali Linux的最新版本为2020.2。</p>
@@ -414,7 +422,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

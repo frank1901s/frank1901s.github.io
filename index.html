@@ -125,12 +125,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,92 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/08/13/2020%E5%B9%B4%E5%87%8C%E4%BA%91%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/13/2020%E5%B9%B4%E5%87%8C%E4%BA%91%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="post-title-link" itemprop="url">2020年凌云学习计划</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-13 23:36:58 / 修改时间：23:37:07" itemprop="dateCreated datePublished" datetime="2020-08-13T23:36:58+08:00">2020-08-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>现在是8月中旬，到年底还有很重的学习任务。</p>
+<ol>
+<li><p>公司申请等保资质，为此专门出台了等保测评师的考试激励制度，中级测评师通过考试奖励3000元，不通过罚款一半，传闻测评师中级考试通过率很低，并且同时参加考试的同事水平都很强，如果通过名额有限制，竞争可谓非常激烈。</p>
+</li>
+<li><p>我报考了软考下半年11月份的网络工程师考试，目前复习还没有开始、</p>
+</li>
+<li><p>在学习渗透测试技术，需要耗费大量的业余时间。</p>
+</li>
+<li><p>另外还想考驾照，还想有时间的时候去练练车。</p>
+</li>
+<li><p>国庆节回家补办婚礼，因此失去了国庆节复习的机会。<br>……</p>
+</li>
+</ol>
+<p>凡事预则立，不预则废。必须制定学习计划来合理的安排学习时间，以免手忙脚乱，顾此失彼。</p>
+<p>我用Excel简单做了一个计划，将渗透测试学习（目前在学习MSF）、网络工程师备考、等保学习这三部分作为计划的目标来实现。</p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1597331904631.png13" alt="计划记录表"></p>
+<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1597332047303.png13" alt="配置表"></p>
+<p>计划记录表中的名词解释：</p>
+<p><strong>预期</strong>：即预期学习时间，每个科目的预期学习时间根据当日日程的类型和系数（默认为1）来决定，预期学习时间会根据日程类型和系数的改变而自动更新</p>
+<p>使用了VLOOKUP函数，例E5单元格的公式为：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="EXCEL"><figure class="iseeu highlight /excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="built_in">VLOOKUP</span>($<span class="symbol">C5</span>,配置表!$A$<span class="symbol">10:</span>$D$<span class="number">13</span>,<span class="number">2</span>,<span class="number">0</span>)*$<span class="symbol">D5</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>实际</strong>：即实际学习时间：实际学习时间填写之后会自动判断是否达标，并以相应的颜色来突出显示（超标为绿色背景，未达标红色背景，与预期一致不填充，使用了Excel条件格式的突出显示单元格规则来实现）</p>
+<p><strong>进度</strong>：记录当前的学习进度（如MSF学习到第10节课，网工仅学习了概论部分）</p>
+<p><strong>备注</strong>：额外的情况说明</p>
+<p>计划从今日开始，到12月31日至，共141天，将计划展示于此，也可以一定程度上激励自己。</p>
+<hr>
+<center>秋风木叶</center>
+<center>2020-8-13</center>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -783,81 +869,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/05/08/VSCode%E4%B8%8B%E9%85%8D%E7%BD%AEPython%E7%8E%AF%E5%A2%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="秋风木叶">
-      <meta itemprop="description" content="一片宁静自由的空间……">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TACGIB CLUB">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/08/VSCode%E4%B8%8B%E9%85%8D%E7%BD%AEPython%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">VSCode下配置Python环境</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-08 22:33:03" itemprop="dateCreated datePublished" datetime="2020-05-08T22:33:03+08:00">2020-05-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-12 22:36:43" itemprop="dateModified" datetime="2020-05-12T22:36:43+08:00">2020-05-12</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-获取VSCode和Python安装文件"><a href="#1-获取VSCode和Python安装文件" class="headerlink" title="1. 获取VSCode和Python安装文件"></a>1. 获取VSCode和Python安装文件</h2><p><em>VSCode官方下载地址：</em> <a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">https://code.visualstudio.com/Download</a><br><em>Python官方下载地址：</em> <a href="https://www.python.org/downloads/release/python-382/" target="_blank" rel="noopener">https://www.python.org/downloads/release/python-382/</a></p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1588947839737.png8" alt="VSCode官网下载页面"></p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1588947839740.png8" alt="Python逛网下载页面（部分）"></p>
-<p><em>百度网盘下载地址：</em><br><em>(网盘中可能已经不是最新版，建议大家到官网下载)</em><br><a href="https://pan.baidu.com/s/1sr9OK8ozOsqPci7Ur_HStg" target="_blank" rel="noopener">https://pan.baidu.com/s/1sr9OK8ozOsqPci7Ur_HStg</a> </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/08/VSCode%E4%B8%8B%E9%85%8D%E7%BD%AEPython%E7%8E%AF%E5%A2%83/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -927,14 +938,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

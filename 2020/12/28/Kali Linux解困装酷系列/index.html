@@ -20,24 +20,30 @@
     var CONFIG = {"hostname":"tacgib.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="PhpMyAdmin无法连接数据库问题解决： 报错：phpMyAdmin #2002 Cannot log in to the MySQL server 打开配置文件 phpMyAdmin]# vim libraries&#x2F;config.default.php 修改：$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] &#x3D; &#39;localhost&#39;;">
+  <meta name="description" content="晚上给笔记本升级了内存，把原来的8G内存条换成了16G的，顺便打开Kali Linux玩玩，体验一下性硬件的效果。发现了几个觉得好玩的小程序（当然也是看着帖子玩的），希望可以让你爱上Linux，同时也给忙碌的工作增添一点乐趣。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理">
-<meta property="og:url" content="https://tacgib.club/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/index.html">
+<meta property="og:title" content="Kali Linux解困装酷系列">
+<meta property="og:url" content="https://tacgib.club/2020/12/28/Kali%20Linux%E8%A7%A3%E5%9B%B0%E8%A3%85%E9%85%B7%E7%B3%BB%E5%88%97/index.html">
 <meta property="og:site_name" content="TACGIB CLUB">
-<meta property="og:description" content="PhpMyAdmin无法连接数据库问题解决： 报错：phpMyAdmin #2002 Cannot log in to the MySQL server 打开配置文件 phpMyAdmin]# vim libraries&#x2F;config.default.php 修改：$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] &#x3D; &#39;localhost&#39;;">
+<meta property="og:description" content="晚上给笔记本升级了内存，把原来的8G内存条换成了16G的，顺便打开Kali Linux玩玩，体验一下性硬件的效果。发现了几个觉得好玩的小程序（当然也是看着帖子玩的），希望可以让你爱上Linux，同时也给忙碌的工作增添一点乐趣。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1584494846550.png18">
-<meta property="article:published_time" content="2020-03-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-16T03:25:30.378Z">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/2020-12-28-22-46-04.gif">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609167564950.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609168084257.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609168767830.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609169320330.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609169499922.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609169742854.png">
+<meta property="article:published_time" content="2020-12-28T15:49:23.244Z">
+<meta property="article:modified_time" content="2020-12-28T15:49:30.946Z">
 <meta property="article:author" content="秋风木叶">
 <meta property="article:tag" content="小书匠">
-<meta property="article:tag" content="dvwa">
-<meta property="article:tag" content="配置">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Kali">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1584494846550.png18">
+<meta name="twitter:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/2020-12-28-22-46-04.gif">
 
-<link rel="canonical" href="https://tacgib.club/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/">
+<link rel="canonical" href="https://tacgib.club/2020/12/28/Kali%20Linux%E8%A7%A3%E5%9B%B0%E8%A3%85%E9%85%B7%E7%B3%BB%E5%88%97/">
 
 
 <script id="page-configurations">
@@ -50,7 +56,7 @@
   };
 </script>
 
-  <title>Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理 | TACGIB CLUB</title>
+  <title>Kali Linux解困装酷系列 | TACGIB CLUB</title>
   
 
 
@@ -168,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/12/28/Kali%20Linux%E8%A7%A3%E5%9B%B0%E8%A3%85%E9%85%B7%E7%B3%BB%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +187,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理
+          Kali Linux解困装酷系列
         </h1>
 
         <div class="post-meta">
@@ -190,19 +196,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-18 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-18T00:00:00+08:00">2020-03-18</time>
+              <time title="创建时间：2020-12-28 23:49:23 / 修改时间：23:49:30" itemprop="dateCreated datePublished" datetime="2020-12-28T23:49:23+08:00">2020-12-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-16 11:25:30" itemprop="dateModified" datetime="2020-05-16T11:25:30+08:00">2020-05-16</time>
-              </span>
 
           
-            <span id="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理" title="阅读次数">
+            <span id="/2020/12/28/Kali%20Linux%E8%A7%A3%E5%9B%B0%E8%A3%85%E9%85%B7%E7%B3%BB%E5%88%97/" class="post-meta-item leancloud_visitors" data-flag-title="Kali Linux解困装酷系列" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -217,8 +217,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/12/28/Kali%20Linux%E8%A7%A3%E5%9B%B0%E8%A3%85%E9%85%B7%E7%B3%BB%E5%88%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/28/Kali%20Linux%E8%A7%A3%E5%9B%B0%E8%A3%85%E9%85%B7%E7%B3%BB%E5%88%97/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -233,28 +233,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <hr>
-<p>PhpMyAdmin无法连接数据库问题解决：</p>
-<p>报错：<br><code>phpMyAdmin #2002 Cannot log in to the MySQL server</code></p>
-<p>打开配置文件</p>
-<p><code>phpMyAdmin]# vim libraries/config.default.php</code></p>
-<p>修改：<br><code>$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] = &#39;localhost&#39;;</code><br>为：<br><code>$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] = &#39;127.0.0.1&#39;;</code></p>
-<p>DVWA数据库无法创建错误修复：</p>
-<p><img src="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1584494846550.png18" alt="dvwa无法创建数据库"></p>
-<p>修改config.inc.php文件</p>
-<p>要将：</p>
-<p><code>$_DVWA[ &#39;db_server&#39; ]   = &#39;localhost1&#39;;</code><br>修改为：<br><code>$_DVWA[ &#39;db_server&#39; ]   = &#39;127.0.0.1&#39;;</code></p>
+        <p>晚上给笔记本升级了内存，把原来的8G内存条换成了16G的，顺便打开Kali Linux玩玩，体验一下性硬件的效果。发现了几个觉得好玩的小程序（<em>当然也是看着帖子玩的</em>），希望可以让你爱上Linux，同时也给忙碌的工作增添一点乐趣。</p>
 <a id="more"></a>
 
-<p>并修改数据库密码</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$_DVWA[ &#39;db_user&#39; ]     &#x3D; &#39;数据库用户名&#39;;</span><br><span class="line">$_DVWA[ &#39;db_password&#39; ] &#x3D; &#39;数据库密码&#39;;</span><br></pre></td></tr></table></figure></div>
-<p>DVWA默认的用户有5个，用户名密码如下：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">admin&#x2F;password</span><br><span class="line">gordonb&#x2F;abc123</span><br><span class="line">1337&#x2F;charley</span><br><span class="line">pablo&#x2F;letmein</span><br><span class="line">smithy&#x2F;password</span><br></pre></td></tr></table></figure></div>
+<h2 id="1-Cmatrix"><a href="#1-Cmatrix" class="headerlink" title="1. Cmatrix"></a>1. Cmatrix</h2><p>看过黑客帝国的大家一定对“Matrix”这个词不陌生，Cmatrix这个小程序也很炫酷，运行效果如下：</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/2020-12-28-22-46-04.gif" alt="Cmatrix"></p>
+<p>大家如果感兴趣可以安装，Kali Linux或者Ubuntu中直接命令安装即可，非常简单：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 安装命令</span><br><span class="line">$ sudo apt-get install cmatrix</span><br><span class="line">// 执行命令</span><br><span class="line">$ sudo cmatrix</span><br></pre></td></tr></table></figure></div>
+<p>更多的参数效果交给大家自己去研究。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609167564950.png" alt="执行参数"></p>
+<h2 id="2-Star-Wars"><a href="#2-Star-Wars" class="headerlink" title="2. Star Wars"></a>2. Star Wars</h2><p>有没有想过在Linux命令行看动画？我之前也没想过，但是如果敲一句命令就能实现，想不想试试呢？除了画风有点骨感，其他都挺好的……：</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609168084257.png" alt="星球大战"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 输入下面命令打开</span><br><span class="line">$ sudo telnet towel.blinkenlights.nl</span><br><span class="line">// 按Ctrl+&#125;后输入quit退出</span><br></pre></td></tr></table></figure></div>
 
-
+<h2 id="3-oneko"><a href="#3-oneko" class="headerlink" title="3. oneko"></a>3. oneko</h2><p>会跟着鼠标跑的可爱小猫，移动鼠标它就会跟过来，只要启动oneko的窗口不关掉，就一直有效，试试吧！</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609168767830.png" alt="会跟着鼠标跑的可爱小猫"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install oneko</span><br></pre></td></tr></table></figure></div>
+<h2 id="4-Cowsay"><a href="#4-Cowsay" class="headerlink" title="4. Cowsay"></a>4. Cowsay</h2><p>见图：</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609169320330.png" alt="cowsay"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install cowsay</span><br><span class="line">$ apt-get install xcowsay</span><br><span class="line">$ cowsay hello!</span><br><span class="line">$ xcowsay hello!</span><br></pre></td></tr></table></figure></div>
+<h2 id="5-SL"><a href="#5-SL" class="headerlink" title="5. SL"></a>5. SL</h2><p>输入sl就可以看到一列火车从屏幕开过，给黑乎乎的窗口带来一点乐趣。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609169499922.png" alt="enter description here"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install sl</span><br><span class="line">$ sl</span><br></pre></td></tr></table></figure></div>
+<h2 id="6-Moo"><a href="#6-Moo" class="headerlink" title="6. Moo"></a>6. Moo</h2><p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1609169742854.png" alt="moo"></p>
 <hr>
 <center>秋风木叶</center>
-<center>2020-3-18</center>
+<center>2020-12-28</center>
     </div>
 
     
@@ -289,7 +293,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tacgib.club/2020/03/18/Centos7%E4%B8%ADlampp%E4%B8%8Bphpmyadmin%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ADVWA%E6%97%A0%E6%B3%95%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" title="Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理">https://tacgib.club/2020/03/18/Centos7中lampp下phpmyadmin无法连接数据库及DVWA无法创建数据库问题处理/</a>
+    <a href="https://tacgib.club/2020/12/28/Kali%20Linux%E8%A7%A3%E5%9B%B0%E8%A3%85%E9%85%B7%E7%B3%BB%E5%88%97/" title="Kali Linux解困装酷系列">https://tacgib.club/2020/12/28/Kali Linux解困装酷系列/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -301,8 +305,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E5%B0%8F%E4%B9%A6%E5%8C%A0/" rel="tag"># 小书匠</a>
-              <a href="/tags/dvwa/" rel="tag"># dvwa</a>
-              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Kali/" rel="tag"># Kali</a>
           </div>
 
         
@@ -311,13 +315,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/20/May%E7%9A%84%E4%B8%8A%E7%8F%AD%E8%B7%AF%E4%B8%8A/" rel="prev" title="May的上班路上">
-      <i class="fa fa-chevron-left"></i> May的上班路上
+    <a href="/2020/11/12/%E4%BB%8A%E5%A4%9C%E6%9C%89%E6%84%9F%EF%BC%8C%E6%97%A0%E9%A2%98/" rel="prev" title="今夜有感，无题">
+      <i class="fa fa-chevron-left"></i> 今夜有感，无题
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/20/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%8A%A5%E9%94%80%E4%BA%8B%E4%BB%B6/" rel="next" title="记一次报销事件">
-      记一次报销事件 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -377,6 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Cmatrix"><span class="nav-text">1. Cmatrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Star-Wars"><span class="nav-text">2. Star Wars</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-oneko"><span class="nav-text">3. oneko</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Cowsay"><span class="nav-text">4. Cowsay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-SL"><span class="nav-text">5. SL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Moo"><span class="nav-text">6. Moo</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

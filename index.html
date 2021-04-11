@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-04-11 19:41:35 / 修改时间：19:41:42" itemprop="dateCreated datePublished" datetime="2021-04-11T19:41:35+08:00">2021-04-11</time>
+              <time title="创建时间：2021-04-11 19:41:35 / 修改时间：19:44:42" itemprop="dateCreated datePublished" datetime="2021-04-11T19:41:35+08:00">2021-04-11</time>
             </span>
 
           
@@ -221,29 +221,15 @@
 
       
           <h2 id="01-安装方法"><a href="#01-安装方法" class="headerlink" title="01 安装方法"></a>01 安装方法</h2><p>在CentOS终端使用 daocloud 一键安装命令进行安装</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="02-报错与处理"><a href="#02-报错与处理" class="headerlink" title="02 报错与处理"></a>02 报错与处理</h2><p>安装时遇到报错，报错信息如下：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@192 ~]<span class="comment"># sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br><span class="line">  File <span class="string">"/bin/yum-config-manager"</span>, line 135</span><br><span class="line">    except yum.Errors.RepoError, e:</span><br><span class="line">                               ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure></div>
-<p>处理过程：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/bin/yum-config-manager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/python -tt</span></span><br><span class="line">改成这样：<span class="comment">#!/usr/bin/python2 -tt</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="03-Docker启动与状态查看"><a href="#03-Docker启动与状态查看" class="headerlink" title="03 Docker启动与状态查看"></a>03 Docker启动与状态查看</h2><p>启动 Docker</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure></div>
-
-<p>通过运行 hello-world 映像来验证是否正确安装了 Docker Engine-Community</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure></div>
-
-<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1618139201037.png" alt="Hello-World镜像"></p>
-<p>Docker状态查看：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure></div>
-
-<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1618140863698.png" alt="启动时"></p>
-<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1618140931131.png" alt="关闭时"></p>
-<hr>
-<p>文章使用小书匠MarkDown编辑器书写，大家可以通过本站<a href="https://tacgib.club/2019/07/06/小书匠邀请码/">小书匠邀请码</a>一文获取<strong>邀请码</strong>及<strong>下载链接</strong>。</p>
-<hr>
-<center>秋风木叶</center>
-<center>2021-4-11</center>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/11/CentOS%E5%AE%89%E8%A3%85Docker%E7%AE%80%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

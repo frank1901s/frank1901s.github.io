@@ -17,17 +17,17 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tacgib.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"tacgib.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="近期读了一本驹井伸俊的《鱼骨笔记术》，除了了解了如何绘制鱼骨图，可以使用鱼骨图来提高工作、学习效率，还让我对目录结构的合理设计的重要性有所思考。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="目录结构设计实践">
-<meta property="og:url" content="https://tacgib.club/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:url" content="https://tacgib.cn/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="TACGIB CLUB">
 <meta property="og:description" content="近期读了一本驹井伸俊的《鱼骨笔记术》，除了了解了如何绘制鱼骨图，可以使用鱼骨图来提高工作、学习效率，还让我对目录结构的合理设计的重要性有所思考。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tacgib.club/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/images/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://tacgib.cn/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/images/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
 <meta property="article:published_time" content="2019-07-29T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-05-12T14:36:43.872Z">
 <meta property="article:author" content="秋风木叶">
@@ -35,9 +35,9 @@
 <meta property="article:tag" content="目录结构设计">
 <meta property="article:tag" content="知识管理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tacgib.club/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/images/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:image" content="https://tacgib.cn/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/images/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
 
-<link rel="canonical" href="https://tacgib.club/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/">
+<link rel="canonical" href="https://tacgib.cn/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/">
 
 
 <script id="page-configurations">
@@ -168,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.cn/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -290,7 +290,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tacgib.club/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/" title="目录结构设计实践">https://tacgib.club/2019/07/30/目录结构设计实践/</a>
+    <a href="https://tacgib.cn/2019/07/30/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/" title="目录结构设计实践">https://tacgib.cn/2019/07/30/目录结构设计实践/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -418,7 +418,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://tacgib.club/" title="https:&#x2F;&#x2F;tacgib.club">Title</a>
+          <a href="https://tacgib.club/" title="https:&#x2F;&#x2F;tacgib.club" rel="noopener" target="_blank">Title</a>
         </li>
     </ul>
   </div>

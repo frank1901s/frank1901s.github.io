@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tacgib.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"tacgib.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="0. 前言前段时间购买一台小米的摄像机——小白智能摄像机云台版，价格不贵，但是有个最大的问题就是他以分钟为单位存储视频文件，每分钟的视频都会存储为一个mp4文件，这样导致观看回放的时候要频繁的切换视频，特别累。 如果能有办法将他一小时为单位合成就好了，了解了python可以轻松实现，所以尝试了一番，效果还不错，另外使用Python编程的感觉真的很爽。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用python拼接视频实际应用分享">
-<meta property="og:url" content="https://tacgib.club/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/index.html">
+<meta property="og:url" content="https://tacgib.cn/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/index.html">
 <meta property="og:site_name" content="TACGIB CLUB">
 <meta property="og:description" content="0. 前言前段时间购买一台小米的摄像机——小白智能摄像机云台版，价格不贵，但是有个最大的问题就是他以分钟为单位存储视频文件，每分钟的视频都会存储为一个mp4文件，这样导致观看回放的时候要频繁的切换视频，特别累。 如果能有办法将他一小时为单位合成就好了，了解了python可以轻松实现，所以尝试了一番，效果还不错，另外使用Python编程的感觉真的很爽。">
 <meta property="og:locale" content="zh_CN">
@@ -43,7 +43,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1587127321660.png17">
 
-<link rel="canonical" href="https://tacgib.club/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/">
+<link rel="canonical" href="https://tacgib.cn/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/">
 
 
 <script id="page-configurations">
@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.club/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.cn/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -306,7 +306,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tacgib.club/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/" title="使用python拼接视频实际应用分享">https://tacgib.club/2020/04/17/使用python拼接视频实际应用分享/</a>
+    <a href="https://tacgib.cn/2020/04/17/%E4%BD%BF%E7%94%A8python%E6%8B%BC%E6%8E%A5%E8%A7%86%E9%A2%91%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB/" title="使用python拼接视频实际应用分享">https://tacgib.cn/2020/04/17/使用python拼接视频实际应用分享/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -435,7 +435,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://tacgib.club/" title="https:&#x2F;&#x2F;tacgib.club">Title</a>
+          <a href="https://tacgib.club/" title="https:&#x2F;&#x2F;tacgib.club" rel="noopener" target="_blank">Title</a>
         </li>
     </ul>
   </div>

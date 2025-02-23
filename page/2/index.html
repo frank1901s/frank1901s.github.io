@@ -125,12 +125,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">90</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">91</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">89</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,99 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.cn/2023/03/26/HEXO%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/26/HEXO%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">HEXO更新文章报错处理过程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-26 15:40:25 / 修改时间：15:40:28" itemprop="dateCreated datePublished" datetime="2023-03-26T15:40:25+08:00">2023-03-26</time>
+            </span>
+
+          
+            <span id="/2023/03/26/HEXO%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B/" class="post-meta-item leancloud_visitors" data-flag-title="HEXO更新文章报错处理过程" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/03/26/HEXO%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/03/26/HEXO%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这是一次失败的问题处理过程，一开始在终端命令行（hexo d -g）更新文章时报错，分析可能是前段时间更换站点域名有关系，可能站点登录密钥过期了，于是重新进行了配置，最后发现还是无法登录，切换网络后成功，之前登录的是图书馆的网络，才知道是图书馆网络的问题，真是白忙活一场，一开始尝试换网多好呢，失败的过程也记录一下。</p>
+<!--moro-->
+
+<p>使用hexo d -g更新文章时候报错<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1679813170051.png" alt="enter description here"></p>
+<p>配置用户名和邮箱：<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1679814294317.png" alt="enter description here"></p>
+<p>删除掉当前用户ssh目录下的文件：<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1679814237471.png" alt="enter description here"></p>
+<p>生成密钥<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1679814568907.png" alt="enter description here"></p>
+<p>登录GitHub配置登录密钥：<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1679814827466.png" alt="enter description here"></p>
+<p>……还是不行……</p>
+<p>切换网络试一试，果然，正常了，是网络的问题，为什么一开始不换网络试试呢？<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1679815743291.png" alt="enter description here"></p>
+<hr>
+<p>文章使用小书匠MarkDown编辑器书写，大家可以通过本站<a href="https://tacgib.cn/2019/07/06/小书匠邀请码/">小书匠邀请码</a>一文获取<strong>邀请码</strong>及<strong>下载链接</strong>。</p>
+<hr>
+<center>秋风木叶</center>
+<center>2023-3-26</center>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -943,103 +1036,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tacgib.cn/2022/03/11/%E8%A3%85%E4%BF%AE%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%9A%94%E9%9F%B3%E7%AA%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="秋风木叶">
-      <meta itemprop="description" content="一片宁静自由的空间……">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TACGIB CLUB">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/11/%E8%A3%85%E4%BF%AE%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%9A%94%E9%9F%B3%E7%AA%97/" class="post-title-link" itemprop="url">装修笔记之隔音窗</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-11 19:43:12 / 修改时间：19:50:09" itemprop="dateCreated datePublished" datetime="2022-03-11T19:43:12+08:00">2022-03-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%A3%85%E4%BF%AE%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">/装修笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/03/11/%E8%A3%85%E4%BF%AE%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%9A%94%E9%9F%B3%E7%AA%97/" class="post-meta-item leancloud_visitors" data-flag-title="装修笔记之隔音窗" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/03/11/%E8%A3%85%E4%BF%AE%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%9A%94%E9%9F%B3%E7%AA%97/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/11/%E8%A3%85%E4%BF%AE%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%9A%94%E9%9F%B3%E7%AA%97/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<p>2022年3月10日安装隔音窗简记</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/11/%E8%A3%85%E4%BF%AE%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%9A%94%E9%9F%B3%E7%AA%97/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1109,7 +1105,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1120,7 +1116,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

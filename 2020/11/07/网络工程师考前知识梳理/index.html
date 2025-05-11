@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tacgib.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="临考前匆匆过了一遍，把重点摘录出来，方便查阅。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络工程师考前知识梳理">
+<meta property="og:url" content="https://tacgib.cn/2020/11/07/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%80%83%E5%89%8D%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:site_name" content="TACGIB CLUB">
+<meta property="og:description" content="临考前匆匆过了一遍，把重点摘录出来，方便查阅。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604665441852.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604665548812.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604666129815.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604666477735.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604666702561.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604670481359.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604670681486.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604671262065.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604671299353.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604673066494.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604675323088.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604675517054.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604675594341.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604676009832.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604676750525.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604676893934.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677605648.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677632107.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677923763.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604678019668.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677993400.png6">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604712040669.png7">
+<meta property="og:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604714479000.png7">
+<meta property="article:published_time" content="2020-11-07T03:33:47.130Z">
+<meta property="article:modified_time" content="2020-11-07T03:34:09.580Z">
+<meta property="article:author" content="秋风木叶">
+<meta property="article:tag" content="小书匠">
+<meta property="article:tag" content="网络工程师">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="考试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604665441852.png6">
+
+<link rel="canonical" href="https://tacgib.cn/2020/11/07/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%80%83%E5%89%8D%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>网络工程师考前知识梳理 | TACGIB CLUB</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  <script type="text/javascript" src="/js/my_js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">TACGIB CLUB</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">云影时空</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">107</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">92</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tacgib.cn/2020/11/07/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%80%83%E5%89%8D%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="秋风木叶">
+      <meta itemprop="description" content="一片宁静自由的空间……">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TACGIB CLUB">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络工程师考前知识梳理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-07 11:33:47 / 修改时间：11:34:09" itemprop="dateCreated datePublished" datetime="2020-11-07T11:33:47+08:00">2020-11-07</time>
+            </span>
+
+          
+            <span id="/2020/11/07/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%80%83%E5%89%8D%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="网络工程师考前知识梳理" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/07/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%80%83%E5%89%8D%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/07/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%80%83%E5%89%8D%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>临考前匆匆过了一遍，把重点摘录出来，方便查阅。</p>
+<a id="more"></a>
+
+<p><strong>数据通信模型</strong>：信源、信道、新宿、噪声。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604665441852.png6" alt="数据通信模型"></p>
+<p><strong>模拟信道带宽计算</strong>：W = f2（高频） - f1（低频）</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604665548812.png6" alt="模拟信道带宽计算"></p>
+<p><strong>数字信道带宽计算：</strong></p>
+<p> <em>根据奈奎斯特定理（无噪声影响）：</em><br>B = 2W（B：码元速率、波特率）<br>信息量 n（位）与码元种类N：n = log2N<br>数据速率 R = Bn = Blog2N = 2Wlog2N</p>
+<p><em>根据香农定理（有噪声影响）：</em><br>C=Wlog2(1+S/N)<br>信噪比和分贝数：dB = 10lg(S/N)</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604666129815.png6" alt="信道的数据速率计算公式"></p>
+<p><strong>信道延迟：</strong><br>信道延迟：电缆信道延迟200m/μs<br>卫星信道延迟：270ms</p>
+<p><strong>双绞线线序：</strong><br>T568A：白绿、绿、白橙、蓝、白蓝、橙、白粽、棕<br>T568B：白橙、橙、白绿、蓝、白蓝、绿、白粽、棕</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604666477735.png6" alt="交叉线和直通线适用范围"></p>
+<p><strong>数字信道编码：</strong> 采样（2倍）、量化（等级）、编码（二进制）三个步骤。</p>
+<p><strong>调制技术与码元数：</strong> n = log2N</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604666702561.png6" alt="调制技术与码元数"></p>
+<p><strong>各种编码的效率：</strong><br>4B/5B效率：80%，百兆以太网<br>8B/10B效率：80%，千兆以太网<br>64B/66B效率：97%，万兆以太网<br>曼码和差分曼码效率：50%，以太网</p>
+<p><strong>通信方向：</strong> 单工（电视）、全双工（手机）、半双工（对讲机）</p>
+<p><strong>电路交换：</strong><br>优点：独占性、实时性，适合传输大量的数据<br>缺点：需建立一条物理连接，利用率低</p>
+<p><strong>报文交换：</strong>（物流包裹）<br>优点：不需要专用通道，线路利用率高，存储转发节点可校验纠错<br>缺点：有通信时延</p>
+<p>T1标准：1.544Mbps、125μs = 8000次。1.544Mbps = [ 24 * ( 7 + 1 ) + 1 ] * 8000。T476（美国）</p>
+<p>E1标准：2.048Mbps、125μs = 8000次。2.048Mbps = [ 32 * ( 7 + 1 ) ] * 8000。E444（中国和欧洲）</p>
+<p><strong>校验码：</strong><br><em>奇偶校验码</em>：看1的个数是奇数/偶数。只能检错，移动通信广泛采用。</p>
+<p><em>海明码</em>：有数据位m后面增加冗余校验位k，组成信息m+k，则满足m+k&lt;2^k-1可纠正1位错误。</p>
+<p><em>海明码距d</em>：两个码字之间不同的最小的位数<br>可以查出的错误位：≤ d - 1<br>可以纠正的错误位：&lt; d / 2</p>
+<p><em>CRC码:</em>  冗余循环校验码，通过循环移位，实现检错，硬件容易实现，广泛用于局域网，只能检错不能纠错</p>
+<p>计算CRC校验码：多项式触发，不进位加法。</p>
+<ul>
+<li>写除数，多项式最高次幂是几就补几个0</li>
+<li>写被除数：按多项式次幂数，从高往低排序，系数不为0写1，为0写0，构成被除数</li>
+<li>按位加不进位，得余数</li>
+</ul>
+<p><strong>IEEE802标准：</strong></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604670481359.png6" alt="IEEE802标准"></p>
+<p><strong>MAC帧结构：</strong></p>
+<p>最小64字节，最大1518字节</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604670681486.png6" alt="MAC帧结构"></p>
+<p>最小帧长计算：L = 2R × d/v，其中，R为网络数据速率，d为最大段长，v为信号传播速度。</p>
+<p><strong>以太网速率：</strong></p>
+<p>快速以太网：802.3u标准，速率可达100M，采用100Base-T/F规范。<br>千兆以太网：802.3z标准，速率可到1000M，兼容10M/100M以太网。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604671262065.png6" alt="千兆以太网"></p>
+<p>万兆以太网：802.3ae标准，速率可达万兆，只支持光纤，仅支持全双工，不再采用CSMA/CD，可用于城域网。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604671299353.png6" alt="万兆以太网"></p>
+<p><strong>虚拟局域网VLAN</strong><br>① 控制网络流量，抑制广播风暴<br>② 提高网络安全性<br>③ 网络管理灵活，用户可以随地接入网络</p>
+<p>不同VLAN之间通信：需要路由器或三层交换机。</p>
+<p>VLAN有两种端口：接入端口Access、中继端口Trunk</p>
+<p><strong>局域网互联设备</strong></p>
+<p>生成树网桥：<br>① 确定根桥ID：优先级+MAC地址，都选最小。优先级0-65535（2字节），默认32768（±4096）<br>② 确定根端口：优先级+编号，都选最小的。优先级0-255（1字节），默认128<br>③ 三小原则：优先级、MAC地址、费用</p>
+<p>源路由网络：选好路再走。</p>
+<p><strong>无线通信网</strong></p>
+<p><strong>CSMA/CA</strong>：载波监听多路访问冲突避免，解决隐蔽终端问题<br>① <strong>传输局先检测</strong>，如果探测到网络中没有数据，则等待一个IFS时间，再随机选择一个时间片继续探测，如果无线网络中还没有活动的话，就将数据发送出去<br>② <strong>送出数据前</strong>，先送一段小小的请求报文给目标端，收到目标端回应后，在传送大量的数据，确保不会碰撞，开销最小</p>
+<p><strong>Ad Hoc网络</strong>：节点之间对等。每个节点既是主机，又是路由器，形成自组织网。</p>
+<p><strong>网络互连与局域网</strong></p>
+<p><strong>网络互连设备：</strong><br>① 物理层：中继器、集线器Hub<br>② 数据链路层：网桥、交换机（多口网桥）<br>③ 网络层：路由器</p>
+<p><strong>常用协议端口</strong></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604673066494.png6" alt="常用协议端口"></p>
+<p><strong>IP协议</strong>：无连接的、不可靠的、数据包交换<br>IHL : ip头长度，20字节<br>服务类型：区分优先级<br>总长度：包含IP头在内<br>头校验和：只校验IP头，不包括数据<br>源地址、目的地址<br>生存期：TTL，每一挑加一，超过设定值丢弃<br>用户数据MTU：MAC帧长1518字节，MTU1500字节（最大65535字节，拉火车），1518-14-4-20=1480，传输层-20=1460字节</p>
+<p><strong>IPV4网络地址：</strong> 4个32位，采用点分十进制表示<br>A 1.0.0.0 - 127.255.255.255<br>B 128.0.0.0 - 191.255.255.255<br>C 192.0.0.0 - 223.255.255.255<br>D 224.0.0.0 - 239.255.255.255（组播）<br>E 240.0.0.0 - 255.255.255.255（保留）</p>
+<p><strong>私有地址：</strong><br>A 10.0.0.0 - 10.255.255.255<br>B 172.16.0.0 - 172.31.255.255<br>C 192.168.0.0 - 192.168.255.255</p>
+<p><strong>特殊地址：</strong><br>0.0.0.0：不确切地址，默认路由地址<br>255.255.255.255：广播地址（大广播）<br>127.0.0.1：环回地址<br>168.254.X.X：自动专用地址，找不到DHCP服务器，自己分配一个地址</p>
+<p>网络地址：主机号全0，标志本网络，不分配<br>广播地址：主机号各位全1，小广播<br>组播地址：224.0.0.1，从224.0.0.0到239.255.255.255，标志一个组内的主机</p>
+<p>ICMP协议：控制报文协议，网络层协议，协议号1<br>3 不可达<br>4 堵塞事故抑制<br>5 重定向<br>11 超时<br>12 参数问题<br>8、10 回送请求或回答<br>13、14 时间戳请求或回答</p>
+<p>VLSM：子网，向右借位<br>CIDR：超网，向左借位</p>
+<p><strong>ARP</strong>：地址解析协议<br>arp -a（显示所有接口的当前ARP缓存表）、-d（删除ARP缓存表）、-s（绑定ARP表项，如IP和MAC绑定）</p>
+<p>由路由器充当第三方代理，进行ARP请求/回答</p>
+<p>ARP欺骗：向某一主机发送伪装ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机。</p>
+<p><strong>网络层路由协议</strong>：选择转发数据路径</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604675323088.png6" alt="路由协议"></p>
+<p><strong>RIP协议</strong>：距离矢量算法，计算挑数，最大15跳，16跳不可达，30s更新，180s不存在，240s删除，支持等费用负载均衡和链路冗余，使用UDP的<strong>520</strong>端口</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604675517054.png6" alt="RIP数据包"></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604675594341.png6" alt="RipV1和RipV2区别"></p>
+<ul>
+<li>水平分割：一条路由信息不发送给信息的来源</li>
+<li>反向毒化的水平分割：把从邻居学习到的路由信息设置为16跳，再发送给邻居，更安全</li>
+<li>抑制定时器和触发更新可以防止环路</li>
+</ul>
+<p><strong>OSPF协议</strong>：开放最短路径优先协议：链路状态算法，包括：连通、距离、时延、带宽等装填，触发更新、分层路由，支持大型网络。</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604676009832.png6" alt="OSPF协议"></p>
+<p><strong>OSPF区域：</strong><br>主干区域：链接其他区域，都要经过主干区域，也接受任何路由信息。<br>标准区域：接受任何路由信息。<br>完全存根区域：只接受本区域内的路由信息，其他一概不接收。<br>不完全存根区域，除接受本区域的路由信息，还接受类型7的</p>
+<p><strong>OSPF网络类型</strong>：<br>点到点网络：有效邻居总是可以形成邻居关系，组播地址为224.0.0.5<br>点到多点网络：不选举DR/BDR，可看做是点到点网络的集合，单播<br>广播型网络：选举DR/BDR，所有路由器和DR/BDR交换信息，DR/BDR不能被抢占，广播型网络有<strong>以太网、令牌环网、FDDI</strong>，组播<br>非广播型：没有广播，需要手动设置邻居，Hello消息单播，X.25、ATM<br>虚连接：建立连接，就不再发送hello，单播</p>
+<p><strong>OSPF报文类型</strong>：</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604676750525.png6" alt="OSPF报文类型"></p>
+<p><strong>边界网关协议BGP</strong>：外部网关协议，不同自治区域系统AS之间。寻找较好的路由策略。通过TCP179端口建立，支持VLSM和CIDR，是一种距离矢量协议，BGP4+支持IPv6</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604676893934.png6" alt="BGP协议"></p>
+<p><strong>BGP报文</strong>：<br>open；建立邻居关系<br>Update：发送新的路由信息<br>Keepalive：保持外交活动，周期性的确认邻居关系<br>Notification：报告检测到的错误</p>
+<p><strong>TCP协议</strong>：传输控制协议，面向字节流顺序、连接、可靠、全双工，可变滑动窗口、缓冲累积传送，协议号6</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677605648.png6" alt=""><br><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677632107.png6" alt=""></p>
+<p>URG：紧急指针有效<br>ACK：应答顺序号有效<br>PSH：推进功能有效<br>RST：复位为初始状态<br>SYN：建立同步连接<br>FIN：结束释放连接<br>校验和：包括TCP段头、数据、伪段头</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677923763.png6" alt="常用TCP端口"></p>
+<p>三次握手、四次挥手</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604678019668.png6" alt="三次握手示意图"></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604677993400.png6" alt="四次挥手示意图"></p>
+<p><strong>UDP协议</strong>：头部8字节</p>
+<p><strong>SMTP协议</strong>：电子邮件协议，TCP的25端口，C/S，仅传送ASCII文本</p>
+<p><strong>电子邮件协议</strong></p>
+<p><strong>S/MIME多用途互联网邮件扩展协议</strong>：负责将多媒体邮件安全上传到服务器，包含文本、图像、音频、视频以及其他应用程序专用的数据</p>
+<p><strong>POP3邮局协议</strong>：负责将邮件下载到客户机，采用TCP的110端口，用户从服务器读取邮件后，服务器就删除邮件。</p>
+<p><strong>IMAP4互联网消息访问协议</strong>：提供摘要浏览、选择下载。采用TCP的142端口，C/S工作，用户从服务器读取邮件后，服务器仍然会保存该邮件。</p>
+<p><strong>PGP电子邮件加密协议</strong>：包括加密、鉴别、签名和压缩等技术。使用IDEA（128位）加密数据，RSA加密密码，MD5认证。</p>
+<p><strong>PEM增强保密邮件协议</strong>：使用多种加密方法提供机密性、认证和信息完整性的因特网电子邮件协议，采用每个报文一次一密的方法加密。</p>
+<p><strong>文件传输协议FTP</strong>：负责文件通过服务器上传下载，采用TCP的两条连接，数据连接20端口，控制连接21端口，C/S工作，合法访问和匿名访问，分主动模式和被动模式两种，被动服务器随机端口，主动为20端口传输数据。</p>
+<p><strong>远程登录协议Telnet</strong>：网络虚拟终端支持异构主机，采用TCP的23端口，C/S工作</p>
+<p><strong>HTTP协议</strong>，TCP的80端口</p>
+<p><strong>路由器NAT技术</strong>：网络地址翻译，解决IP地址短缺，路由器内部和外部地址进行转换。</p>
+<ul>
+<li>静态地址转换：一对一，服务器</li>
+<li>动态地址转换：多对少，内部局域网较多用户访问外部网络，外部需要地址池</li>
+<li>网络地址端口转换：多对一，使用外部一个IP，多个端口号对应内部IP，也成为IP伪装，可以隐藏内部主机</li>
+</ul>
+<p><strong>QoS技术</strong>：集成服务（IntServ）、区分服务（DiffServ）</p>
+<p><strong>MPLS技术</strong>：多协议标签交换，属于2.5层，一般认为是第三层交换，硬件交换、速度快，一次路由、多次交换。用标签代替复杂的路由运算。</p>
+<p>标记边缘路由器LER，标记交换路由器LSR<br>MPLS转发等价类，把等价的通信流汇聚转发，标记具有局部性，提供QoS，粒度控制，负载均衡等。</p>
+<p>IPV6地址：128位，冒分十六进制，8段，每4位二进制写成16进制</p>
+<p>IPv6地址简化写法：<br>① 前面的0可以省<br>② 多个0可以用冒号，但只能用一次<br>③ 多个0可以压缩为一个0<br>④ IPv4兼容写法——::192.168.1.10</p>
+<p>IPV6地址分类：单播地址、任意播地址、组播地址。分配到接口、一个接口可以被赋予任何类型的多个地址或地址范围</p>
+<p>任意播：① 不作为源，只能为目标  ② 不能给主机，只能给路由器</p>
+<p>组播：一组接口。没有广播，格式前缀1111 1111</p>
+<p>单播：<br>① 可聚合全球单播（公共地址）：格式前缀001<br>② 链路本地地址（自动专用地址，类似169.254.0.0）：前缀1111 1110 10<br>③ 站点本地地址（类似私网地址）：前缀1111 1110 11<br>④ 特殊单播地址：不确定地址 0;0;0;0;0;0;0;0，不分配，初始用，能作源地址。环回地址0;0;0;0;0;0;0;1</p>
+<p><strong>移动IP</strong>： 移动主机在移动的同时，能够在任何地方使用他的家乡地址进行联网。原理是移动主机分配一个家乡地址作为永久标识，如果到外地赋予一个转交地址，家乡地址就会获得一个外地的转交地址。漫游。</p>
+<p><strong>IPV6过渡技术</strong>：<br>① 隧道技术：IPV6节点之间通过IPv4网络进行通信<br>② 协议翻译技术：IPv6节点和IPv4节点之间可以通信<br>③ 双协议栈技术：IPV4和IPv6共存与同一设备和同一网络中</p>
+<p><strong>IPv6路由协议</strong>：定义了5中协议<br>① RIPng：RIPv2的扩展，UDP 521端口<br>② OSPFv3：OSPFv2的扩展，做了较大改进<br>③ BGP4+：BGP4的扩展，用以支持IPv6<br>④ ICMPv6：ICMP的扩展，集成了ARP功能<br>⑤ IS-IS：中间系统到中间系统，IS-IS属于内部网关路由协议。是一种链路状态协议，与TCP/IP中的OSPF非常相似，使用 最短路径优先算法进行路由计算。</p>
+<p><strong>常见网络安全威胁和漏洞类型</strong>：窃听、病毒、假冒、重放、流量分析、破坏完整、木马、诽谤、非授权访问、拒绝访问；物理、软件、不兼容等</p>
+<p><strong>网络安全信息数据五大特征</strong>：<br>① 完整性：信息数据完整性不被破坏，篡改等<br>② 保密性：有权的人才可以看到<br>③ 可用性：可以正常使用，攻击后也可以快速恢复可用性<br>④ 不可否认性：抗抵赖性<br>⑤ 可控性：信息数据可以管控传播范围</p>
+<p><strong>网络安全基本技术</strong>：<br>① 数据加密：数据按规则打乱，重新组合<br>② 数字签名：证明发送者签发，也可进行完整性校验<br>③ 身份认证：用户合法性<br>④ 防火墙：控制内外部数据进出，阻挡病毒木马<br>⑤ 入侵检测：采用异常检测特征保护网络<br>⑥ 网络隔离：内外网隔离分开使用，网闸</p>
+<p><strong>信息加密技术</strong>：<br>① 对称加密：DES（数据加密标准）、3DES（三重DES加密）、IDEA（国际数据加密算法）、AES（高级加密标准）、RC4（流加密算法4版）等<br>② 非对称加密：RSA（基于大素数分解）、ECC（椭圆曲线密码编码学）、Elgamal（基于离散对数）</p>
+<p><strong>RSA加密</strong>：公钥加密，私钥解密<br><strong>RSA签名</strong>：私钥加密，公钥解密</p>
+<p><strong>RSA公钥计算：</strong></p>
+<p><em>假设 p = 3、q = 11（p，q都是素数即可）<br>则 N = pq = 33，r = (p-1)(q-1) = (3-1)(11-1) = 20<br>根据模反元素的计算公式，我们可以得出，ed ≡ 1 (mod 20),即ed = 20n+1 (n为正整数)<br>假设 n=1，则 ed = 21。e、d为正整数，并且 e与 r互质，则 e = 3，d = 7（两个数交换一下也可以）<br>所以，公钥为 (N, e) = (33, 3)，密钥为 (N, d) = (33, 7)</em></p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604712040669.png7" alt="加密技术密钥、分组长度汇总"></p>
+<p><strong>密钥管理体系</strong>：<br>① KMI：密钥管理基础结构，第三方KDC，秘密物理通道，用于封闭的内网使用<br>② PKI：公钥基础结构，不依赖秘密物理通道。适用于开放的外网<br>③ SPK：适用于规模化专用网</p>
+<p><strong>VPN技术</strong>：虚拟专用网<br>① 建立在公网上<br>② 虚拟性，没有专用物理连接<br>③ 专用性，非VPN用户无法访问</p>
+<p><strong>VPN采用的四个关键技术</strong>：<br>① 隧道技术<br>② 加解密技术<br>③ 密钥管理技术<br>④ 身份认证技术</p>
+<p><strong>VPN三种应用解决方案</strong>：<br>① 内联网VPN：企业内部用于连通总部和分部的各个LAN<br>② 外联网VPN：企业外部用于实现企业与客户、银行、供应商互通<br>③ 远程接入VPN：远程用户出差访问企业内部网络</p>
+<p><strong>VPN在七层协议中使用的技术汇总</strong>：<br>① 二层：PPP（点对点协议）、PPTP（点对点隧道协议）、L2TP（第二层隧道协议）<br>② 三层：IPSec（IP安全性）、GRE（通用路由封装协议）<br>③ 四层：SSL/TLS（安全套接层）</p>
+<p><strong>PPP、PPTP、L2TP对比</strong>：<br>① PPP：LCP（链路控制协议，2层）、NCP（网络控制协议，3层）、PAP（口令认证协议，明文）、CHAP（挑战握手协议，密文）<br>② PPTP：PAC（PPTP接入集中器）、PNS（PPTP网络服务器）<br>③ L2TP：LAC（L2TP访问集中器）、LNS（L2TP网络服务器）</p>
+<p><strong>PPTP与L2TP的区别</strong>：<br>① PPTP要求IP网络，L2TP适用于各种网络<br>② PPTP只能建立1条隧道，L2TP可以建立多条<br>③ PPTP包头占用6字节，L2TP包头占用4字节<br>④ PPTP不支持隧道验证，L2TP支持</p>
+<p><strong>IPSec两种模式</strong>：传输模式、隧道模式<br>① 认证头AH：用于数据完整和数据源认证，防重放<br>② 封装安全负荷ESP：提供数据保密、数据完整、辅助防重放<br>③ 密钥交换协议IKE：生成分发密钥</p>
+<p><img src="http://zhengjie.ren/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1604714479000.png7" alt="传输模式和隧道模式"></p>
+<p>传输模式保留原来的IP头，将AH认证头插入到原IP头之后。<br>隧道模式增加新的IP头，将AH认证头加到原IP头之前。</p>
+<p><strong>SSL和IPSec的区别</strong>：<br>① IPSec工作在网络层，适用于固定的VPN。SSL是通过应用层web连接建立的，适合移动用户远程访问公司的VPN。<br>② IPSec工作在网络层，灵活性小。SSL工作在传输层，灵活性大。</p>
+<p><strong>IPS和IDS区别</strong>：IPS串联在网络中，会切断网络，IDS是旁路式并联在网络上，不切断网络。</p>
+<p><strong>IPS/IDS和防火墙区别</strong>：防火墙一般只检测网络层和传输层的数据包，不能检测应用层的内容，IPS/IDS可以检测字节内容。</p>
+<p><strong>mmc可以调出Windows管理控制台，组策略配置：gpedit.msc</strong></p>
+<p><strong>交换机性能参数计算</strong>：<br>① 包转发率：端口吞吐率，64字节数据包转发能力，单位pps（包/s）,包转发率 = 千兆端口数 × 1.488Mpps + 百兆端口数 × 0.1488Mpps + 其余端口 × 相应包转发pps<br>② 背板带宽：端口处理器和数据总线之间单位时间内传输的最大数据量。单位Gbps，总带宽 = 端口数 × 端口速率 × 2（全双工）</p>
+<p><strong>路由器接口</strong>：<br>① Serial端口：高速同步串口，与广域网链接，可链接DDN、帧中继、X.25、PSTN等网络<br>② Console端口：初次配置控制台端口，利用终端仿真程序，如超级终端、SecureVRT对路由器进行本地配置<br>③ RJ-45端口：以太网口，通过双绞线连接局域网<br>④ AUX端口：远程配置路由器，连接Modem，远程拨号</p>
+<p><strong>配置交换机和路由器的几种方法：</strong><br>① Console口、② AUX口远程拨号、③ Telnet带外远程、④ Web浏览器输入IP、⑤ 网管软件</p>
+<p><strong>广播域和冲突域</strong>：<br>① 交换机能分割冲突域，一个端口一个冲突域<br>② 路由器能分割广播域，一个端口一个广播域</p>
+<p><strong>GVRP交换机VLAN注册协议</strong>：<br>① Normal模式：VLAN增删改，广播保持一致<br>② Fixed模式：只能传播手动配置的VLAN信息<br>③ Forbidden：至传播VLAN1不传送其他VLAN</p>
+<p>交换机默认：透明模式，VLAN1，所有端口</p>
+<p><strong>配置GVRP</strong>：</p>
+<p>S1&gt; system-view<br>S1&gt; un in en<br>S1] gvrp<br>S1] vlan 2<br>S1] int van 2<br>S1-Vlanif2] ip add 192.168.1.254 24</p>
+<p>S1] int g0/0/1<br>S1-g0/0/1] port link-type access<br>S1-g0/0/1] port default vlan 2</p>
+<p>S1] int g0/0/2<br>S1-g0/0/2] port link-type trunk<br>S1-g0/0/2] port trunk allow-pass vlan all<br>S1-g0/0/2] gvrp //接口也要启用gvrp</p>
+<p><strong>配置RIP</strong>：<br>R1&gt; sys<br>R1] un in en<br>R1] int g0/0/2<br>R1-g0/0/2] ip add 192.168.1.1 24<br>R1] rip<br>R1-rip1] network 192.168.1.0<br>R1-rip1] network 10.0.0.0</p>
+<p><strong>配置OSPF</strong>：<br>R1&gt; sys<br>R1] un in en<br>R1] int e0/0/0<br>R1-e0/0/0] ip add 192.1.0.129 26<br>R1-e0/0/0] int s0/0/0<br>R1-S0/0/0] ip add 192.200.10.5 30</p>
+<p>R1] ospf<br>R1-ospf-1] area 0<br>R1-ospf-1-area-0] net 192.200.10.4 0.0.0.3<br>R1-ospf-1-area-0] area 1<br>R1-ospf-1-area-1] net 192.1.0.128 0.0.0.63</p>
+<p><strong>配置IS-IS</strong>：<br>R1&gt; sys<br>R1] un in en<br>R1] isis<br>R1-isis-1] network-entity 10.0000.0000.0001.00<br>R1-isis-1] return<br>R1] int g0/0/0<br>R1-g0/0/0] isis enable<br>R1-g0/0/0] int g0/0/1<br>R1-g0/0/1] isis-enable</p>
+<p><strong>ACL</strong>:<br>① 自上而下<br>② 先匹配，特例在前<br>③ 默认丢弃原则</p>
+<p>反掩码：0.0.0.0 表示单个主机，同host，如：192.168.1.1 0.0.0.0 = host 192.168.1.1<br>反掩码：255.255.255.255，任一主机，同any，通常与0.0.0.0一起使用，例如：0.0.0.0 255.255.255.255 = any</p>
+<p>ACL编号：3000-3999</p>
+<p>高级ACL基于目的，放置到源端路由器</p>
+<p>R2] acl 3000<br>R2-acl-adv-3000] rule 5 deny ip source 192.168.20.10 destination 192.168.10.10<br>R2] int g0/0/0<br>R2-g0/0/0] traffic-filter inbound acl 3000</p>
+<p><strong>ping ipv6 fc0::1</strong></p>
+<p><strong>网络管理五大功能</strong>：计费管理、安全管理、性能管理、配置管理、故障管理</p>
+<p><strong>netstat命令</strong>：显示网络活动状态<br>-a 显示所有活动的TCP连接以及计算机侦听的TCP和UDP端口<br>-e 显示以太网统计信息，如发送和接收的字节数、数据包数<br>-n 显示活动的TCP连接诶，以数字形式表现地址和端口号<br>-p 显示指定协议的连接<br>-s 按协议显示统计信息，默认显示TCP、UDP、ICMP、IP<br>-r 显示ip路由表内容，与<strong>route print</strong>命令等价</p>
+<p><strong>nslookup</strong>：分为交互式和非交互式<br>set type=mx：查询本地域的邮件交换服务器信息<br>server name：由当前默认服务器切换到指定名字服务器<br>set type=any：显示所有资源记录。A、PTR、MX、CNAME、NS、SOA等</p>
+<p><strong>网络存储技术：RAID</strong><br>廉价磁盘冗余阵列，RAID卡<br>RAID0：不备份，100%<br>RAID1：镜像备份，50%<br>RAID3、5：(n-1)/n * 100%<br>RAID10：镜像阵列条带，50%</p>
+<hr>
+<center>秋风木叶</center>
+<center>2020-11-6</center>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>有您的赞赏，我会更加有动力！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://zhengjie.ren/小书匠/1587477501749.png21" alt="秋风木叶 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://zhengjie.ren/小书匠/1615647836412.png" alt="秋风木叶 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>秋风木叶
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tacgib.cn/2020/11/07/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%80%83%E5%89%8D%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" title="网络工程师考前知识梳理">https://tacgib.cn/2020/11/07/网络工程师考前知识梳理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E4%B9%A6%E5%8C%A0/" rel="tag"># 小书匠</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" rel="tag"># 网络工程师</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+              <a href="/tags/%E8%80%83%E8%AF%95/" rel="tag"># 考试</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/01/%E5%8D%8E%E4%B8%BA%E6%A8%A1%E6%8B%9F%E5%99%A8%EF%BC%88eNSP%EF%BC%89%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" rel="prev" title="华为模拟器（eNSP）网络实验视频教程">
+      <i class="fa fa-chevron-left"></i> 华为模拟器（eNSP）网络实验视频教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/11/%E5%85%B3%E4%BA%8E%E5%87%BA%E5%B7%AE%E7%9A%84%E6%82%B2%E4%BC%A4%E4%B8%80%E5%88%BB/" rel="next" title="关于出差的悲伤一刻">
+      关于出差的悲伤一刻 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">秋风木叶</p>
+  <div class="site-description" itemprop="description">一片宁静自由的空间……</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">107</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://tacgib.cn/" title="https:&#x2F;&#x2F;tacgib.cn">主页</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.oscca.gov.cn/" title="https:&#x2F;&#x2F;www.oscca.gov.cn&#x2F;" rel="noopener" target="_blank">国家密码管理局</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://openstd.samr.gov.cn/bzgk/gb/index" title="https:&#x2F;&#x2F;openstd.samr.gov.cn&#x2F;bzgk&#x2F;gb&#x2F;index" rel="noopener" target="_blank">国家标准全文公开系统</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">秋风木叶</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'JPt4HeuQbSMjT4cQoLKEphX7-gzGzoHsz',
+      appKey     : 'J2t8poEMDg21tmRTFirjHgqx',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
